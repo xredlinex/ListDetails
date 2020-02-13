@@ -13,10 +13,12 @@ class NewsTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var newsImageView: UIImageView!
-
     @IBOutlet weak var newsTitleTextLabel: UILabel!
-    
     @IBOutlet weak var newsDescriptionTextLabel: UILabel!
+    @IBOutlet weak var newMarkTextLabel: NSLayoutConstraint!
+    @IBOutlet weak var newsAuthorTextLabel: UILabel!
+    @IBOutlet weak var newsPublishAtTextLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

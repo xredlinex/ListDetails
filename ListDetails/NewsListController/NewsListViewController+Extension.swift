@@ -28,7 +28,8 @@ extension NewsListViewController {
                                   method: .get,
                                   parameters: parameters,
                                   encoding: URLEncoding.default,
-                                  headers: ["X-Api-Key" : "439c5ba63c944a2cac581d87e18fc759"]).responseObject { (responce: DataResponse<NewsModel>) in
+//                    439c5ba63c944a2cac581d87e18fc759
+                                  headers: ["X-Api-Key" : "e796d4f208d34b95855430b1f8f2fa42"]).responseObject { (responce: DataResponse<NewsModel>) in
                                     if let recieveNews = responce.result.value?.articles {
                                         if recieveNews.count != 0 {
                                             self.news.append(contentsOf: recieveNews)
