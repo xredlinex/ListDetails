@@ -1,69 +1,66 @@
-////
-////  NewsRequest.swift
-////  ListDetails
-////
-////  Created by alexey sorochan on 12.02.2020.
-////  Copyright © 2020 alexey sorochan. All rights reserved.
-////
 //
-//import UIKit
-//import Alamofire
-//import AlamofireObjectMapper
-//import RealmSwift
+//  NewsRequest.swift
+//  ListDetails
 //
+//  Created by alexey sorochan on 12.02.2020.
+//  Copyright © 2020 alexey sorochan. All rights reserved.
+//
+
+import UIKit
+import Alamofire
+import AlamofireObjectMapper
+import RealmSwift
+
 //class NewsRequest: UIViewController {
 //    
-//    public func newsRequestGlobal(link: String, parameters: [String: Any], isLoading: Bool) -> [NewsArticlesModel]{
+//    func globalNewsRequest(isLoaded: Bool,link: String, keyword: String? = nil, country: String? = nil, category: String? = nil, pageNumber: Int) {
 //        
-//        let realmService = RealmService.shared
 //        var news: [NewsArticlesModel] = []
+//        let realmService = RealmService.shared
 //        
-//        debugPrint(parameters)
-//        if !isLoading {
+//        let parameters: [String : Any] = ["q" : keyword ?? "",
+//                                          "country" : country ?? "",
+//                                          "category" : category ?? "",
+//                                          "page" : pageNumber]
+//        
+//        if !isLoaded {
 //            let url = URL(string: link)
-//            if let recieveURL =  url {
-//                debugPrint("recieveulr")
+//            if let recieveURL = url {
 //                Alamofire.request(recieveURL,
 //                                  method: .get,
 //                                  parameters: parameters,
 //                                  encoding: URLEncoding.default,
 //                                  headers: ["X-Api-Key" : "439c5ba63c944a2cac581d87e18fc759"]).responseObject { (response: DataResponse<NewsModel>) in
-//                           debugPrint(parameters, link, response)
 //                                    if let recieveNews = response.result.value?.articles {
 //                                        if recieveNews.count != 0 {
-//                                
 //                                            news.append(contentsOf: recieveNews)
 //                                            realmService.writeNews(news)
-//                                            debugPrint("req")
-//                                            debugPrint(news.count)
 //                                            
-//                                            DispatchQueue.main.async {
-//                                            debugPrint("news count in dispatch", news.count)
-//                                            
-//                                                self.transferToMainDataViewController()
-//                                                
-//                                                   
-//                                            }
-//                                            
-//                                            
-//                                           
 //                                        } else {
-//                                            debugPrint("no news recieve")
+//                                            debugPrint("no news found")
 //                                        }
 //                                    } else {
-//                                        debugPrint("error or try load from memory")
-//                                        debugPrint("error news load")
+//                                        debugPrint("bad resonse")
 //                                    }
 //                }
 //            } else {
-//                debugPrint("no url")
+//               debugPrint("no  link")
 //            }
 //        }
 //        
-//        return news
+//        
+//        
+//        
+//        
 //    }
+//    
+//    
+//    
+//    
+//    
+//    
 //}
-//
+////
 //
 //extension UIApplication {
 //    var keyWindow: UIWindow? {

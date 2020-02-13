@@ -14,10 +14,10 @@ import RealmSwift
 
 extension NewsListViewController {
     
-    func newsRequest(link: String, keyword: String? = nil, country: String, category: String? = nil) {
+    func newsRequest(link: String, keyword: String? = nil, country: String? = nil, category: String? = nil) {
         
         parameters = ["q" : keyword ?? "",
-                      "country" : country,
+                      "country" : country ?? "",
                       "category" : category ?? "",
                       "page" : pageNumber]
         
