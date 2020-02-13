@@ -32,10 +32,14 @@ class NewsListViewController: UIViewController {
     
     var refreshControll = UIRefreshControl()
     
+
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+
         realmService.deleteNews()
         networkConnect()
         
@@ -60,7 +64,12 @@ class NewsListViewController: UIViewController {
         tableView.dataSource = self
     }
     
-
+    @IBAction func didTapSelectCountryActionButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Country", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CountrySortViewController") as! CountrySortViewController
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }
 
 extension NewsListViewController {
