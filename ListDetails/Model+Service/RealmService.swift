@@ -29,7 +29,7 @@ class RealmService {
         }
     }
     
-    func getNews() -> [NewsArticlesModel]{
+    func getNews() -> [NewsArticlesModel] {
         
         do {
             let realm = try Realm()
