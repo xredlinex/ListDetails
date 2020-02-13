@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		973B4BB323F54C0E0006653B /* ContriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B4BB223F54C0E0006653B /* ContriesModel.swift */; };
+		973B4BB523F552E60006653B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B4BB423F552E60006653B /* File.swift */; };
 		97932AD823F34DC10010F339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932AD723F34DC10010F339 /* AppDelegate.swift */; };
 		97932ADA23F34DC10010F339 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932AD923F34DC10010F339 /* SceneDelegate.swift */; };
 		97932ADF23F34DC10010F339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97932ADD23F34DC10010F339 /* Main.storyboard */; };
@@ -22,12 +24,21 @@
 		97932AFD23F3529C0010F339 /* Class+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932AFC23F3529C0010F339 /* Class+Extension.swift */; };
 		97932B0023F353140010F339 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932AFF23F353140010F339 /* RealmModel.swift */; };
 		97932B0223F3531F0010F339 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932B0123F3531F0010F339 /* RealmService.swift */; };
+		97C4452123F5489A00E6828C /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C4452023F5489A00E6828C /* Country.storyboard */; };
+		97C4452523F548D400E6828C /* CountrySortViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C4452423F548D400E6828C /* CountrySortViewController+Extension.swift */; };
+		97C4452723F548E200E6828C /* CountrySortViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C4452623F548E200E6828C /* CountrySortViewController+TableView.swift */; };
+		97C4452B23F5495100E6828C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C4452923F5495100E6828C /* CountryTableViewCell.swift */; };
+		97C4452C23F5495100E6828C /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97C4452A23F5495100E6828C /* CountryTableViewCell.xib */; };
+		97C4452F23F549E800E6828C /* CountrySortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C4452E23F549E800E6828C /* CountrySortViewController.swift */; };
+		97FAA78523F57A0200B8EC75 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FAA78423F57A0200B8EC75 /* Test.swift */; };
 		F741D6193AC3E641A0999859 /* Pods_ListDetails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0941241C3A703D82EB24D05 /* Pods_ListDetails.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		48AB11E139A52795BE346AD9 /* Pods-ListDetails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListDetails.release.xcconfig"; path = "Target Support Files/Pods-ListDetails/Pods-ListDetails.release.xcconfig"; sourceTree = "<group>"; };
 		676228F1B059258BCF90998E /* Pods-ListDetails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListDetails.debug.xcconfig"; path = "Target Support Files/Pods-ListDetails/Pods-ListDetails.debug.xcconfig"; sourceTree = "<group>"; };
+		973B4BB223F54C0E0006653B /* ContriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContriesModel.swift; sourceTree = "<group>"; };
+		973B4BB423F552E60006653B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		97932AD423F34DC10010F339 /* ListDetails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListDetails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97932AD723F34DC10010F339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97932AD923F34DC10010F339 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +56,13 @@
 		97932AFC23F3529C0010F339 /* Class+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+Extension.swift"; sourceTree = "<group>"; };
 		97932AFF23F353140010F339 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		97932B0123F3531F0010F339 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		97C4452023F5489A00E6828C /* Country.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Country.storyboard; sourceTree = "<group>"; };
+		97C4452423F548D400E6828C /* CountrySortViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CountrySortViewController+Extension.swift"; sourceTree = "<group>"; };
+		97C4452623F548E200E6828C /* CountrySortViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CountrySortViewController+TableView.swift"; sourceTree = "<group>"; };
+		97C4452923F5495100E6828C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		97C4452A23F5495100E6828C /* CountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
+		97C4452E23F549E800E6828C /* CountrySortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySortViewController.swift; sourceTree = "<group>"; };
+		97FAA78423F57A0200B8EC75 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		C0941241C3A703D82EB24D05 /* Pods_ListDetails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListDetails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +123,7 @@
 				97932AF123F3513C0010F339 /* NewsListController */,
 				97932AFB23F3526D0010F339 /* NewsDetail */,
 				9789AC4523F3F69D00288637 /* Storyboards */,
+				97C4452823F548E700E6828C /* CountrySelect */,
 				97932AE023F34DC30010F339 /* Assets.xcassets */,
 				97932AE223F34DC30010F339 /* LaunchScreen.storyboard */,
 				97932AE523F34DC30010F339 /* Info.plist */,
@@ -154,8 +173,32 @@
 			children = (
 				97932AFF23F353140010F339 /* RealmModel.swift */,
 				97932B0123F3531F0010F339 /* RealmService.swift */,
+				973B4BB223F54C0E0006653B /* ContriesModel.swift */,
+				973B4BB423F552E60006653B /* File.swift */,
+				97FAA78423F57A0200B8EC75 /* Test.swift */,
 			);
 			path = "Model+Service";
+			sourceTree = "<group>";
+		};
+		97C4452823F548E700E6828C /* CountrySelect */ = {
+			isa = PBXGroup;
+			children = (
+				97C4452023F5489A00E6828C /* Country.storyboard */,
+				97C4452E23F549E800E6828C /* CountrySortViewController.swift */,
+				97C4452423F548D400E6828C /* CountrySortViewController+Extension.swift */,
+				97C4452623F548E200E6828C /* CountrySortViewController+TableView.swift */,
+				97C4452D23F5495400E6828C /* CountryCell */,
+			);
+			path = CountrySelect;
+			sourceTree = "<group>";
+		};
+		97C4452D23F5495400E6828C /* CountryCell */ = {
+			isa = PBXGroup;
+			children = (
+				97C4452923F5495100E6828C /* CountryTableViewCell.swift */,
+				97C4452A23F5495100E6828C /* CountryTableViewCell.xib */,
+			);
+			path = CountryCell;
 			sourceTree = "<group>";
 		};
 		B984A6156C48C99ACEEBEFE1 /* Frameworks */ = {
@@ -226,7 +269,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97C4452C23F5495100E6828C /* CountryTableViewCell.xib in Resources */,
 				97932AE423F34DC30010F339 /* LaunchScreen.storyboard in Resources */,
+				97C4452123F5489A00E6828C /* Country.storyboard in Resources */,
 				97932AE123F34DC30010F339 /* Assets.xcassets in Resources */,
 				97932AF523F352040010F339 /* NewsTableViewCell.xib in Resources */,
 				97932ADF23F34DC10010F339 /* Main.storyboard in Resources */,
@@ -286,13 +331,20 @@
 				97932AF823F352490010F339 /* NewsDetailViewController.swift in Sources */,
 				97932B0023F353140010F339 /* RealmModel.swift in Sources */,
 				97932AF423F352040010F339 /* NewsTableViewCell.swift in Sources */,
+				97C4452F23F549E800E6828C /* CountrySortViewController.swift in Sources */,
 				97932AFA23F352670010F339 /* NewsDetailViewController+Extension.swift in Sources */,
+				973B4BB323F54C0E0006653B /* ContriesModel.swift in Sources */,
 				97932AD823F34DC10010F339 /* AppDelegate.swift in Sources */,
 				97932B0223F3531F0010F339 /* RealmService.swift in Sources */,
 				97932AEE23F3511C0010F339 /* NewsListViewController+Extension.swift in Sources */,
+				97C4452B23F5495100E6828C /* CountryTableViewCell.swift in Sources */,
+				97FAA78523F57A0200B8EC75 /* Test.swift in Sources */,
+				973B4BB523F552E60006653B /* File.swift in Sources */,
 				97932ADA23F34DC10010F339 /* SceneDelegate.swift in Sources */,
 				97932AEC23F350FC0010F339 /* NewsListViewController.swift in Sources */,
 				97932AF023F3512D0010F339 /* NewsListViewController+TableView.swift in Sources */,
+				97C4452523F548D400E6828C /* CountrySortViewController+Extension.swift in Sources */,
+				97C4452723F548E200E6828C /* CountrySortViewController+TableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

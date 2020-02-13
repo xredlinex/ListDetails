@@ -94,9 +94,9 @@ class NewsArticlesSourseModel: Object, Mappable {
 //
 //
 //    enum CodingKeys: String, CodingKey {
-//        case status = "status"
-//        case totalResults = "totalResults"
-//        case articles = "articles"
+//        case .status = "status"
+//        case .totalResults = "totalResults"
+//        case .articles = "articles"
 //    }
 //
 //    required convenience init(from decoder: Decoder) throws {
@@ -126,8 +126,8 @@ class NewsArticlesSourseModel: Object, Mappable {
 //    @objc dynamic var favorite = false
 //
 //    enum CodingKeys: String, CodingKey {
-//        case source, author, title, url, urlToImage, publishedAt, content
-//        case newsdescription = "description"
+//        case .source, author, title, url, urlToImage, publishedAt, content
+//        case .newsdescription = "description"
 //      }
 //}
 //
@@ -136,8 +136,8 @@ class NewsArticlesSourseModel: Object, Mappable {
 //    @objc dynamic var name: String?
 //
 //    enum CodingKeys: String, CodingKey {
-//        case id = "id"
-//        case name = "name"
+//        case .id = "id"
+//        case .name = "name"
 //
 //    }
 //}
