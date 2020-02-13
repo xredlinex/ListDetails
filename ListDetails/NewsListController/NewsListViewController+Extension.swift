@@ -6,4 +6,49 @@
 //  Copyright © 2020 alexey sorochan. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import AlamofireObjectMapper
+import Alamofire
+import RealmSwift
+
+
+extension NewsListViewController {
+    
+    func newsRequest(link: String, keyword: String? = nil, country: String? = nil, category: String? = nil) {
+        
+        parameters = ["q" : keyword ?? "",
+                      "country" : country ?? "",
+                      "category" : category ?? "",
+                      "page" : pageNumber]
+        
+        if !isLoadedNews {
+            let url = URL(string: link)
+            if let recieveURL = url {
+                Alamofire.request(recieveURL,
+                                  method: .get,
+                                  parameters: parameters,
+                                  encoding: URLEncoding.default,
+                                  headers: ["X-Api-Key" : "439c5ba63c944a2cac581d87e18fc759"]).responseObject { (responce: DataResponse<NewsModel>) in
+                                    if let recieveNews = responce.result.value?.articles {
+                                        if recieveNews.count != 0 {
+                                            self.news.append(contentsOf: recieveNews)
+                                            self.realmService.writeNews(self.news)
+                                        } else {
+//                                            no news found
+                                            debugPrint("no news")
+                                        }
+                                        self.tableView.reloadData()
+                                    } else {
+                                        debugPrint("no result")
+//                                        alert no result
+                                    }
+                }
+            } else {
+//                alert no link
+                debugPrint("no link")
+            }
+        }
+    }
+    
+}
+

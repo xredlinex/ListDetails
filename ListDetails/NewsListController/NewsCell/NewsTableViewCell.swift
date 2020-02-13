@@ -7,18 +7,39 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var newsImageView: UIImageView!
+
+    @IBOutlet weak var newsTitleTextLabel: UILabel!
+    
+    @IBOutlet weak var newsDescriptionTextLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+  
+    
+}
 
-        // Configure the view for the selected state
+extension NewsTableViewCell {
+    
+    func updateNewsCell(_ news: NewsArticlesModel) {
+        
+        if let imgUrl = news.urlToImage {
+            if let url = URL(string: imgUrl) {
+                newsImageView.kf.setImage(with: url)
+            }
+        }
+        
+        newsTitleTextLabel.text = news.title ?? "-"
+        newsDescriptionTextLabel.text = news.newsDescription
     }
     
+ 
 }
