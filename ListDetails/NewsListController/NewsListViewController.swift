@@ -32,16 +32,13 @@ class NewsListViewController: UIViewController {
     
     var refreshControll = UIRefreshControl()
     
-
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        
         realmService.deleteNews()
         networkConnect()
+        debugPrint(country)
         
         if !ifConnect {
             if news.isEmpty {

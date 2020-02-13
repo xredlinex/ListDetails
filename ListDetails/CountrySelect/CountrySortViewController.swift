@@ -16,11 +16,7 @@ class CountrySortViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-        
+
         tableView.register(UINib(nibName: "CountryTableViewCell", bundle: nil), forCellReuseIdentifier: "CountryTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -28,6 +24,7 @@ class CountrySortViewController: UIViewController {
     }
     
     @IBAction func didTapGoBackActionButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
         
     }
     

@@ -26,11 +26,33 @@ extension CountrySortViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.showCountry(countryCodeList[indexPath.row])
         
-        
-        
         return cell
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "NewsListViewController") as! NewsListViewController
+        viewController.country = countryCodeList[indexPath.row]
+        navigationController?.pushViewController(viewController, animated: false)
+
+    }
     
+  
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        let label = UILabel(frame: view.frame)
+        label.text = "Select News Region"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.layer.backgroundColor = UIColor(red: 53/255, green: 56/255, blue: 64/255, alpha: 1).cgColor
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.text = label.text?.uppercased()
+        view.addSubview(label)
+        return view
+    }
 }
