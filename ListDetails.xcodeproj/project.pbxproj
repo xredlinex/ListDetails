@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		973B4BB323F54C0E0006653B /* ContriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973B4BB223F54C0E0006653B /* ContriesModel.swift */; };
+		9745F5F923F6DA80006FE16A /* NewsListViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9745F5F823F6DA80006FE16A /* NewsListViewController+CollectionView.swift */; };
+		9745F5FC23F6DA9E006FE16A /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9745F5FA23F6DA9E006FE16A /* CategoriesCollectionViewCell.swift */; };
+		9745F5FD23F6DA9E006FE16A /* CategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9745F5FB23F6DA9E006FE16A /* CategoriesCollectionViewCell.xib */; };
+		9745F60023F6E57C006FE16A /* NewsCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9745F5FF23F6E57C006FE16A /* NewsCategoriesModel.swift */; };
 		97932AD823F34DC10010F339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932AD723F34DC10010F339 /* AppDelegate.swift */; };
 		97932ADA23F34DC10010F339 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932AD923F34DC10010F339 /* SceneDelegate.swift */; };
 		97932ADF23F34DC10010F339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97932ADD23F34DC10010F339 /* Main.storyboard */; };
@@ -37,6 +41,10 @@
 		48AB11E139A52795BE346AD9 /* Pods-ListDetails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListDetails.release.xcconfig"; path = "Target Support Files/Pods-ListDetails/Pods-ListDetails.release.xcconfig"; sourceTree = "<group>"; };
 		676228F1B059258BCF90998E /* Pods-ListDetails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListDetails.debug.xcconfig"; path = "Target Support Files/Pods-ListDetails/Pods-ListDetails.debug.xcconfig"; sourceTree = "<group>"; };
 		973B4BB223F54C0E0006653B /* ContriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContriesModel.swift; sourceTree = "<group>"; };
+		9745F5F823F6DA80006FE16A /* NewsListViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsListViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		9745F5FA23F6DA9E006FE16A /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		9745F5FB23F6DA9E006FE16A /* CategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
+		9745F5FF23F6E57C006FE16A /* NewsCategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategoriesModel.swift; sourceTree = "<group>"; };
 		97932AD423F34DC10010F339 /* ListDetails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListDetails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97932AD723F34DC10010F339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97932AD923F34DC10010F339 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +91,15 @@
 				48AB11E139A52795BE346AD9 /* Pods-ListDetails.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9745F5FE23F6DAA2006FE16A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9745F5FA23F6DA9E006FE16A /* CategoriesCollectionViewCell.swift */,
+				9745F5FB23F6DA9E006FE16A /* CategoriesCollectionViewCell.xib */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		9789AC4523F3F69D00288637 /* Storyboards */ = {
@@ -133,8 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				97932AEB23F350FC0010F339 /* NewsListViewController.swift */,
+				9745F5F823F6DA80006FE16A /* NewsListViewController+CollectionView.swift */,
 				97932AED23F3511C0010F339 /* NewsListViewController+Extension.swift */,
 				97932AEF23F3512D0010F339 /* NewsListViewController+TableView.swift */,
+				9745F5FE23F6DAA2006FE16A /* Categories */,
 				97932AF623F352090010F339 /* NewsCell */,
 			);
 			path = NewsListController;
@@ -173,6 +192,7 @@
 				97932AFF23F353140010F339 /* RealmModel.swift */,
 				97932B0123F3531F0010F339 /* RealmService.swift */,
 				973B4BB223F54C0E0006653B /* ContriesModel.swift */,
+				9745F5FF23F6E57C006FE16A /* NewsCategoriesModel.swift */,
 			);
 			path = "Model+Service";
 			sourceTree = "<group>";
@@ -270,6 +290,7 @@
 				97932AE423F34DC30010F339 /* LaunchScreen.storyboard in Resources */,
 				97C4452123F5489A00E6828C /* Country.storyboard in Resources */,
 				97932AE123F34DC30010F339 /* Assets.xcassets in Resources */,
+				9745F5FD23F6DA9E006FE16A /* CategoriesCollectionViewCell.xib in Resources */,
 				97932AF523F352040010F339 /* NewsTableViewCell.xib in Resources */,
 				97932ADF23F34DC10010F339 /* Main.storyboard in Resources */,
 			);
@@ -330,7 +351,9 @@
 				97932AF423F352040010F339 /* NewsTableViewCell.swift in Sources */,
 				97C4452F23F549E800E6828C /* CountrySortViewController.swift in Sources */,
 				97932AFA23F352670010F339 /* NewsDetailViewController+Extension.swift in Sources */,
+				9745F5F923F6DA80006FE16A /* NewsListViewController+CollectionView.swift in Sources */,
 				973B4BB323F54C0E0006653B /* ContriesModel.swift in Sources */,
+				9745F60023F6E57C006FE16A /* NewsCategoriesModel.swift in Sources */,
 				97C7903F23F611B2001BC868 /* NewsTableViewCell+Extension.swift in Sources */,
 				97932AD823F34DC10010F339 /* AppDelegate.swift in Sources */,
 				97932B0223F3531F0010F339 /* RealmService.swift in Sources */,
@@ -341,6 +364,7 @@
 				97932AF023F3512D0010F339 /* NewsListViewController+TableView.swift in Sources */,
 				97C4452523F548D400E6828C /* CountrySortViewController+Extension.swift in Sources */,
 				97C4452723F548E200E6828C /* CountrySortViewController+TableView.swift in Sources */,
+				9745F5FC23F6DA9E006FE16A /* CategoriesCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

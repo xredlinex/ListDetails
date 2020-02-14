@@ -19,7 +19,10 @@ extension NewsListViewController {
     func newsRequest() {
 
         if !isLoadedNews {
-            let parameters = ["country" : country, "page" : pageNumber, "pageSize": pageSize] as [String:Any]
+            let parameters = ["country" : country,
+                              "page" : pageNumber,
+                              "category" : category ?? "",
+                              "pageSize": pageSize] as [String:Any]
                   debugPrint(parameters)
             let url = URL(string: link)
             if let urlCorrect = url {
@@ -28,7 +31,7 @@ extension NewsListViewController {
                                   parameters: parameters,
                                   encoding: URLEncoding.default,
                                   headers: ["X-Api-Key" : apikey]).responseObject { (response: DataResponse<NewsModel>) in
-//                                    debugPrint(response)
+                                    debugPrint(response)
                                     if let recieveNews = response.result.value?.articles {
                                         if recieveNews.count != 0 {
                                             debugPrint(recieveNews.count)

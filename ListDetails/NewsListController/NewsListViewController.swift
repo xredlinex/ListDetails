@@ -16,10 +16,17 @@ import Network
 class NewsListViewController: UIViewController {
 
 
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var showCollectionViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainNewsImageView: UIImageView!
+    @IBOutlet weak var categoriesNewsImageView: UIImageView!
+    @IBOutlet weak var searchNewsImageView: UIImageView!
+    
     
     let realmService = RealmService.shared
     var news: [NewsArticlesModel] = []
+    var newsCategories: [NewsCategories] = []
     
     var keyword: String?
     var category: String?
@@ -27,24 +34,20 @@ class NewsListViewController: UIViewController {
     var pageSize: Int = 10
     var maxCount: Int = 100
     var isLoadedNews = true
-    
-    let apikey = "439c5ba63c944a2cac581d87e18fc759"
-    
-//    var parameters: [String : Any] = [:]
+    let apikey = "df23a739ff1045119ffd367b733c0c58"
     var link = "https://newsapi.org/v2/top-headlines"
     var country = "us"
-    
-    
-    
-    
-    
+
     var ifConnect = false
     
     var refreshControll = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        newsCategories = NewsCategoriesList().getCategories()
+        mainNewsImageView.tintColor = .red
         
         realmService.deleteNews()
         networkConnect()
@@ -65,8 +68,19 @@ class NewsListViewController: UIViewController {
                 news = realmService.getNews()
             }
         }
+        
+        
+        
+        
         refreshControll.attributedTitle = NSAttributedString(string: "updating news")
         refreshControll.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
+        
+        
+        collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.reloadData()
+    
         tableView.addSubview(refreshControll)
         tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
         tableView.delegate = self
@@ -74,10 +88,57 @@ class NewsListViewController: UIViewController {
     }
     
     @IBAction func didTapSelectCountryActionButton(_ sender: Any) {
+        
         let storyboard = UIStoryboard(name: "Country", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CountrySortViewController") as! CountrySortViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
+    @IBAction func didTapMainNewsActionButton(_ sender: Any) {
+        debugPrint(country, "first")
+        country = "us"
+        debugPrint(country, "not first")
+        debugPrint(category)
+        category = nil
+        debugPrint(category)
+        
+        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 600)
+        mainNewsImageView.tintColor = .red
+        searchNewsImageView.tintColor = .white
+        categoriesNewsImageView.tintColor = .white
+//
+        
+        
+        pageNumber = 1
+        isLoadedNews = false
+        news.removeAll()
+        tableView.reloadData()
+//        tableView.reloadData()
+        newsRequest()
+////        tableView.reloadData()
+//
+        
+        
+    }
+    
+    
+    @IBAction func didTapSowSearchActionButton(_ sender: Any) {
+        searchNewsImageView.tintColor = .red
+        mainNewsImageView.tintColor = .white
+        categoriesNewsImageView.tintColor = .white
+        
+        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 600)
+    }
+    
+    
+    @IBAction func didTapShowCategories(_ sender: Any) {
+        categoriesNewsImageView.tintColor = .red
+        mainNewsImageView.tintColor = .white
+        searchNewsImageView.tintColor = .white
+        
+        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 900)
+   
+    }
+    
     
 }
 
