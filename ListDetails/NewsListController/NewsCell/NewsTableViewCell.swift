@@ -12,6 +12,7 @@ import Kingfisher
 class NewsTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var newsCellView: UIView!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var newsTitleTextLabel: UILabel!
     @IBOutlet weak var newsDescriptionTextLabel: UILabel!
@@ -24,7 +25,8 @@ class NewsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        newsCellView.setupForCell()
     }
 
   

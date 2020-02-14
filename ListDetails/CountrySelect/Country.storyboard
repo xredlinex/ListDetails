@@ -83,7 +83,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.2081931531" green="0.21894657610000001" blue="0.25098478790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.16942703719999999" green="0.1786142886" blue="0.25491088629999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="3ej-gg-fhc" firstAttribute="top" secondItem="rhI-wd-PcW" secondAttribute="top" id="1Uo-h4-8aO"/>
                             <constraint firstItem="rhI-wd-PcW" firstAttribute="bottom" secondItem="2zz-OO-KaG" secondAttribute="bottom" id="4WC-jK-0ic"/>

@@ -65,9 +65,9 @@ class NewsListViewController: UIViewController {
                 news = realmService.getNews()
             }
         }
-//        refreshControll.attributedTitle = NSAttributedString(string: "updating news")
-//        refreshControll.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
-//        tableView.addSubview(refreshControll)
+        refreshControll.attributedTitle = NSAttributedString(string: "updating news")
+        refreshControll.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refreshControll)
         tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -83,16 +83,16 @@ class NewsListViewController: UIViewController {
 
 extension NewsListViewController {
     
-//    @objc func refreshData() {
-//       
-//        pageNumber = 1
-//        news.removeAll()
-//        tableView.reloadData()
-////        realmService.deleteNews()
-//        newsRequest(link: link, country: country)
-//        refreshControll.endRefreshing()
-////        add toast update complere
-//    }
+    @objc func refreshData() {
+       
+        pageNumber = 1
+        news.removeAll()
+        tableView.reloadData()
+//        realmService.deleteNews()
+        newsRequest()
+        refreshControll.endRefreshing()
+//        add toast update complere
+    }
 }
 
 
