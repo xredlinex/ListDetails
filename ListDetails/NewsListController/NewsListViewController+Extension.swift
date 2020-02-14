@@ -20,6 +20,7 @@ extension NewsListViewController {
                       "country" : country ?? "",
                       "category" : category ?? "",
                       "page" : pageNumber]
+        debugPrint(parameters)
         
         if !isLoadedNews {
             let url = URL(string: link)
@@ -29,20 +30,23 @@ extension NewsListViewController {
                                   parameters: parameters,
                                   encoding: URLEncoding.default,
 //                    439c5ba63c944a2cac581d87e18fc759
-                                  headers: ["X-Api-Key" : "e796d4f208d34b95855430b1f8f2fa42"]).responseObject { (responce: DataResponse<NewsModel>) in
+                                  headers: ["X-Api-Key" : "486ce205d275472a9e5dcb41982f7291"]).responseObject { (responce: DataResponse<NewsModel>) in
+                                    self.isLoadedNews = true
+                                    debugPrint(self.isLoadedNews, "is loaded")
                                     if let recieveNews = responce.result.value?.articles {
                                         if recieveNews.count != 0 {
                                             self.news.append(contentsOf: recieveNews)
                                             self.realmService.writeNews(self.news)
                                         } else {
-//                                            no news found
                                             debugPrint("no news")
                                         }
-                                        self.tableView.reloadData()
+//                                        self.tableView.reloadData()
+                                        debugPrint("relod")
                                     } else {
                                         debugPrint("no result")
 //                                        alert no result
                                     }
+//                                    self.tableView.reloadData()
                 }
             } else {
 //                alert no link

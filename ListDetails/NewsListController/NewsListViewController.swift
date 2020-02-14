@@ -21,10 +21,13 @@ class NewsListViewController: UIViewController {
     
     let realmService = RealmService.shared
     var news: [NewsArticlesModel] = []
-    var pageNumber = 1
-    var pageSize = 10
-    var maxCount = 100
+    
+    
+    var pageNumber: Int = 1
+    var pageSize: Int = 10
+    var maxCount: Int = 100
     var isLoadedNews = true
+    
     var parameters: [String : Any] = [:]
     var link = "https://newsapi.org/v2/top-headlines"
     var country = "ua"
@@ -38,7 +41,8 @@ class NewsListViewController: UIViewController {
         
         realmService.deleteNews()
         networkConnect()
-        debugPrint(country)
+        
+
         
         if !ifConnect {
             if news.isEmpty {
@@ -50,12 +54,13 @@ class NewsListViewController: UIViewController {
             if realmService.getNews().isEmpty {
                 debugPrint("sorry no news in cache")
             } else {
+                debugPrint("no inete whaat")
                 news = realmService.getNews()
             }
         }
-        refreshControll.attributedTitle = NSAttributedString(string: "updating news")
-        refreshControll.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
-        tableView.addSubview(refreshControll)
+//        refreshControll.attributedTitle = NSAttributedString(string: "updating news")
+//        refreshControll.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
+//        tableView.addSubview(refreshControll)
         tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -71,16 +76,16 @@ class NewsListViewController: UIViewController {
 
 extension NewsListViewController {
     
-    @objc func refreshData() {
-       
-        pageNumber = 1
-        news.removeAll()
-        tableView.reloadData()
-//        realmService.deleteNews()
-        newsRequest(link: link, country: country)
-        refreshControll.endRefreshing()
-//        add toast update complere
-    }
+//    @objc func refreshData() {
+//       
+//        pageNumber = 1
+//        news.removeAll()
+//        tableView.reloadData()
+////        realmService.deleteNews()
+//        newsRequest(link: link, country: country)
+//        refreshControll.endRefreshing()
+////        add toast update complere
+//    }
 }
 
 
