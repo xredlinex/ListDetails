@@ -12,17 +12,21 @@ import Kingfisher
 class NewsTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var newsCellView: UIView!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var newsTitleTextLabel: UILabel!
     @IBOutlet weak var newsDescriptionTextLabel: UILabel!
     @IBOutlet weak var newMarkTextLabel: NSLayoutConstraint!
     @IBOutlet weak var newsAuthorTextLabel: UILabel!
     @IBOutlet weak var newsPublishAtTextLabel: UILabel!
+    @IBOutlet weak var freshNewsLabel: UILabel!
+    @IBOutlet weak var showFreshNewsHeightContstraint: NSLayoutConstraint!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        newsCellView.setupForCell()
     }
 
   
@@ -33,6 +37,8 @@ extension NewsTableViewCell {
     
     func updateNewsCell(_ news: NewsArticlesModel) {
         
+        newNewsDate(news.publishedAt ?? "")
+    
         if let imgUrl = news.urlToImage {
             if let url = URL(string: imgUrl) {
                 newsImageView.kf.setImage(with: url)
@@ -40,7 +46,11 @@ extension NewsTableViewCell {
         }
         
         newsTitleTextLabel.text = news.title ?? "-"
-        newsDescriptionTextLabel.text = news.newsDescription
+        newsDescriptionTextLabel.text = news.newsDescription ?? "-"
+        newsAuthorTextLabel.text = news.author ?? "-"
+        newsPublishAtTextLabel.text = converDate(news.publishedAt ?? "")
+        
+        
     }
     
  

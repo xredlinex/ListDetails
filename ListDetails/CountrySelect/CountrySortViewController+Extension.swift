@@ -49,7 +49,7 @@ extension CountrySortViewController: UITableViewDelegate, UITableViewDataSource 
         label.text = "Select News Region"
         label.textAlignment = .center
         label.textColor = .white
-        label.layer.backgroundColor = UIColor(red: 53/255, green: 56/255, blue: 64/255, alpha: 1).cgColor
+        label.layer.backgroundColor = UIColor(red: 43/255, green: 46/255, blue: 65/255, alpha: 1).cgColor
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.text = label.text?.uppercased()
         view.addSubview(label)

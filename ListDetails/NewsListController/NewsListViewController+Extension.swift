@@ -14,42 +14,48 @@ import RealmSwift
 
 extension NewsListViewController {
     
-    func newsRequest(link: String, keyword: String? = nil, country: String? = nil, category: String? = nil) {
+//    func newsRequest(link: String, keyword: String? = nil, country: String? = nil, category: String? = nil, pageNumber: Int) {
         
-        parameters = ["q" : keyword ?? "",
-                      "country" : country ?? "",
-                      "category" : category ?? "",
-                      "page" : pageNumber]
-        
+    func newsRequest() {
+
         if !isLoadedNews {
+            let parameters = ["country" : country, "page" : pageNumber, "pageSize": pageSize] as [String:Any]
+                  debugPrint(parameters)
             let url = URL(string: link)
-            if let recieveURL = url {
-                Alamofire.request(recieveURL,
+            if let urlCorrect = url {
+                Alamofire.request(urlCorrect,
                                   method: .get,
                                   parameters: parameters,
                                   encoding: URLEncoding.default,
-//                    439c5ba63c944a2cac581d87e18fc759
-                                  headers: ["X-Api-Key" : "e796d4f208d34b95855430b1f8f2fa42"]).responseObject { (responce: DataResponse<NewsModel>) in
-                                    if let recieveNews = responce.result.value?.articles {
+                                  headers: ["X-Api-Key" : apikey]).responseObject { (response: DataResponse<NewsModel>) in
+//                                    debugPrint(response)
+                                    if let recieveNews = response.result.value?.articles {
                                         if recieveNews.count != 0 {
+                                            debugPrint(recieveNews.count)
                                             self.news.append(contentsOf: recieveNews)
-                                            self.realmService.writeNews(self.news)
+//                                            add realm
+                                            DispatchQueue.main.async {
+                                                self.tableView.reloadData()
+                                            }
                                         } else {
-//                                            no news found
-                                            debugPrint("no news")
+                                            debugPrint("no recieve news")
                                         }
-                                        self.tableView.reloadData()
+                               
+                                        
                                     } else {
                                         debugPrint("no result")
-//                                        alert no result
                                     }
                 }
+                
             } else {
-//                alert no link
-                debugPrint("no link")
+                debugPrint("no url")
             }
+            
+            
+    
         }
     }
     
 }
+
 
