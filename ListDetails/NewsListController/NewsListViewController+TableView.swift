@@ -32,7 +32,8 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         if news.count < maxCount && indexPath.row >= news.count - 1 {
             pageNumber += 1
             isLoadedNews = false
-            self.newsRequest(link: link)
+            self.newsRequest()
+            
         }
     }
     

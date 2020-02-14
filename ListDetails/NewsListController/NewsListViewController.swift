@@ -18,19 +18,26 @@ class NewsListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    
     let realmService = RealmService.shared
     var news: [NewsArticlesModel] = []
     
-    
+    var keyword: String?
+    var category: String?
     var pageNumber: Int = 1
     var pageSize: Int = 10
     var maxCount: Int = 100
     var isLoadedNews = true
     
-    var parameters: [String : Any] = [:]
+    let apikey = "439c5ba63c944a2cac581d87e18fc759"
+    
+//    var parameters: [String : Any] = [:]
     var link = "https://newsapi.org/v2/top-headlines"
-    var country = "ua"
+    var country = "us"
+    
+    
+    
+    
+    
     var ifConnect = false
     
     var refreshControll = UIRefreshControl()
@@ -47,8 +54,8 @@ class NewsListViewController: UIViewController {
         if !ifConnect {
             if news.isEmpty {
                 isLoadedNews = false
-                debugPrint("new request")
-                newsRequest(link: link, country: country)
+                debugPrint("new request try")
+                newsRequest()
             }
         } else {
             if realmService.getNews().isEmpty {
