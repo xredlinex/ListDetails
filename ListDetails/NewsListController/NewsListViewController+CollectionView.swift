@@ -28,7 +28,7 @@ extension NewsListViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         country = ""
 //        pageNumber = 1
-        category = newsCategories[indexPath.row].categoryName
+        category = newsCategories[indexPath.row].categoryName ?? ""
         news.removeAll()
         newsRequest()
         tableView.reloadData()
