@@ -49,10 +49,21 @@ class NewsDetailViewController: UIViewController {
     
     @IBAction func shareActionButton(_ sender: Any) {
         
+        let shareNews = newsArticle.title ?? ""
+        let shareLink = newsArticle.url ?? ""
+        let viewController = UIActivityViewController(activityItems: [shareNews, shareLink], applicationActivities: [])
         
+        present(viewController, animated: true)
+
     }
     
     @IBAction func visitWebActionButton(_ sender: Any) {
+        
+        if let url = URL(string: newsArticle.url ?? "") {
+            UIApplication.shared.open(url)
+        }
+        
+        
     }
     
 }

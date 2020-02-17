@@ -51,6 +51,7 @@ extension NewsListViewController {
                                         debugPrint(response)
                                         if let recieveNews = response.result.value?.articles {
                                             if recieveNews.count != 0 {
+                                                
                                                 debugPrint(recieveNews.count)
                                                 self.news.append(contentsOf: recieveNews)
                                                 self.realmService.writeNews(self.news)

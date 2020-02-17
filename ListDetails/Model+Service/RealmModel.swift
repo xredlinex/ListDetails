@@ -83,6 +83,9 @@ class NewsArticlesSourseModel: Object, Mappable {
 }
 
 
+
+
+
 //class NewsModel: Object, Codable {
 //    dynamic var status: String?
 //    dynamic var totalResults: Int?

@@ -31,9 +31,10 @@ class NewsListViewController: UIViewController {
     var news: [NewsArticlesModel] = []
     var newsCategories: [NewsCategories] = []
     
+    let apikey = "df23a739ff1045119ffd367b733c0c58"
     var keyword: String?
     var category: String?
-    var country: String = "ua"
+    var country: String = "us"
     var link: String?
     
     
@@ -42,10 +43,6 @@ class NewsListViewController: UIViewController {
     var maxCount: Int = 100
     var isLoadedNews = true
     var isSearchNews = false
-    let apikey = "df23a739ff1045119ffd367b733c0c58"
-    
-    
-
     var ifConnect = false
     
     var refreshControll = UIRefreshControl()
@@ -57,7 +54,7 @@ class NewsListViewController: UIViewController {
         newsCategories = NewsCategoriesList().getCategories()
         
         
-        realmService.deleteNews()
+//        realmService.deleteNews()
         networkConnect()
         
 
@@ -124,7 +121,7 @@ class NewsListViewController: UIViewController {
 //        debugPrint(category)
         
         defaultValues()
-        pageNumber = 1
+        
         isLoadedNews = false
         news.removeAll()
         tableView.reloadData()
@@ -160,8 +157,9 @@ class NewsListViewController: UIViewController {
             debugPrint(apikey)
             debugPrint(link)
             keyword = searchKeyword
-            pageNumber = 1
-            isLoadedNews = false
+        isLoadedNews = false
+         
+//            isLoadedNews = false
                 newsRequest()
        
             
@@ -213,8 +211,10 @@ extension NewsListViewController {
     
     func defaultValues() {
         isSearchNews = false
+        country = "us"
         category = ""
         keyword = ""
+        pageNumber = 1
         link = "https://newsapi.org/v2/top-headlines?"
         showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 600)
         searchBarHeightConstraint.priority = UILayoutPriority(rawValue: 600)
@@ -226,7 +226,7 @@ extension NewsListViewController {
     
     func searchValues() {
         isSearchNews = true
-        link = "http://newsapi.org/v2/everything?"
+        link = "https://newsapi.org/v2/everything?"
         searchNewsImageView.tintColor = .red
         mainNewsImageView.tintColor = .white
         categoriesNewsImageView.tintColor = .white
