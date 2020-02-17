@@ -37,6 +37,7 @@ class NewsDetailViewController: UIViewController {
         
         updateNewsDeatailInfo()
         setupDetailsUI()
+        
 
     }
     @IBAction func didTapGoBackButton(_ sender: Any) {
@@ -44,6 +45,14 @@ class NewsDetailViewController: UIViewController {
         
         
         
+    }
+    
+    @IBAction func shareActionButton(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func visitWebActionButton(_ sender: Any) {
     }
     
 }
@@ -72,16 +81,22 @@ extension NewsDetailViewController {
 extension NewsDetailViewController {
     
     func setupDetailsUI() {
+        newsContentView.setupForCell()
+        shareView.setupForCell()
+        visitWebView.setupForCell()
         
-        newsContentView.clipsToBounds = true
-        newsContentView.layer.cornerRadius = 10
-        shareView.layer.borderColor = UIColor.black.cgColor
-        visitWebView.layer.borderColor = UIColor.black.cgColor
-        shareView.layer.borderWidth = 3
-        visitWebView.layer.borderWidth = 3
+        
+        
+//        newsContentView.clipsToBounds = true
+//        newsContentView.layer.cornerRadius = 10
+//        shareView.layer.borderColor = UIColor.lightGray.cgColor
+//        visitWebView.layer.borderColor = UIColor.lightGray.cgColor
+//        shareView.layer.borderWidth = 1
+//        visitWebView.layer.borderWidth = 1
 
         
-        if newsArticle.author != "" {
+        if newsArticle.author != nil && newsArticle.author != "" {
+            debugPrint("not hide hide author view")
             authorView.isHidden = false
             authorView.setupForCell()
             
