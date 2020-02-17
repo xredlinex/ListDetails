@@ -6,9 +6,11 @@ target 'ListDetails' do
   use_frameworks!
 
   pod 'RealmSwift'
-  pod 'Kingfisher', '~> 5.0'
   pod 'Toast-Swift', '~> 5.0.1'
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireObjectMapper', '~> 5.2'
+  pod 'FlagKit'
+  pod 'Kingfisher'
+  
 
 end
