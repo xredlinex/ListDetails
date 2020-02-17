@@ -40,7 +40,5 @@ extension NewsTableViewCell {
             freshNewsLabel.clipsToBounds = true
             freshNewsLabel.layer.cornerRadius = 6
         }
-        
-        }
-    
+    }
 }

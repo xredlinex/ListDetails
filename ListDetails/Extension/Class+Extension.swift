@@ -30,7 +30,6 @@ extension UIView {
         
         NSLayoutConstraint.activate([blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
                                      blurView.widthAnchor.constraint(equalTo: view.widthAnchor)])
-        
     }
     
     func setupForView() {
@@ -53,9 +52,5 @@ extension UIView {
         
         NSLayoutConstraint.activate([blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
                                      blurView.widthAnchor.constraint(equalTo: view.widthAnchor)])
-        
     }
-    
-    
-    
 }

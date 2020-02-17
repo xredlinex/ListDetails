@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -23,17 +24,16 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.updateNewsCell(news[indexPath.row])
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-       
-
         if news.count < maxCount && indexPath.row >= news.count - 1 {
             pageNumber += 1
             isLoadedNews = false
             self.newsRequest()
-            
         }
     }
     
@@ -55,23 +55,15 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
             newsCatText = category
         }
         
-        
-        
-        
-    
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-            let label = UILabel(frame: view.frame)
-            label.text = newsCatText
-            label.textAlignment = .center
-            label.textColor = .white
-            label.layer.backgroundColor = UIColor(red: 43/255, green: 46/255, blue: 65/255, alpha: 1).cgColor
-            label.font = UIFont.boldSystemFont(ofSize: 15)
-            label.text = label.text?.uppercased()
-            view.addSubview(label)
-         return view
-        
-    
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        let label = UILabel(frame: view.frame)
+        label.text = newsCatText
+        label.textAlignment = .center
+        label.textColor = .white
+        label.layer.backgroundColor = UIColor(red: 43/255, green: 46/255, blue: 65/255, alpha: 1).cgColor
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.text = label.text?.uppercased()
+        view.addSubview(label)
+        return view
     }
-    
-    
 }
