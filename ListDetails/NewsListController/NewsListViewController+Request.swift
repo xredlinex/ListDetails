@@ -11,6 +11,7 @@ import UIKit
 import AlamofireObjectMapper
 import Alamofire
 import RealmSwift
+import Network
 
 
 extension NewsListViewController {
@@ -56,18 +57,27 @@ extension NewsListViewController {
                                             debugPrint("no result")
                                         }
                     }
-                    
                 } else {
                     debugPrint("no url")
                 }
             } else {
                 debugPrint("fatal error")
             }
-            
-            
-            
-    
         }
     }
     
+}
+
+
+extension NewsListViewController {
+    
+    func networkConnect() {
+        
+        let monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                self.ifConnect = true
+            }
+        }
+    }
 }

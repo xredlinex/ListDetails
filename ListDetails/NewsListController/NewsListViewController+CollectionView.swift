@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 extension NewsListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -27,19 +26,10 @@ extension NewsListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         country = ""
-//        pageNumber = 1
+        pageNumber = 1
         category = newsCategories[indexPath.row].categoryName ?? ""
         news.removeAll()
         newsRequest()
         tableView.reloadData()
-//        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 600)
-        
-        debugPrint(category)
-        debugPrint(country)
-        
     }
-    
-    
-    
 }
-
