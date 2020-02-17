@@ -40,7 +40,7 @@ extension CountrySortViewController: UITableViewDelegate, UITableViewDataSource 
         viewController.link = "https://newsapi.org/v2/top-headlines"
 //        viewController.category = ""
 //        viewController.keyword = ""
-        
+        viewController.pageNumber = 1
 
         navigationController?.pushViewController(viewController, animated: false)
 

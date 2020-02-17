@@ -11,6 +11,7 @@ import RealmSwift
 import Alamofire
 import AlamofireObjectMapper
 import Network
+import Toast_Swift
 
 
 class NewsListViewController: UIViewController {
@@ -52,9 +53,7 @@ class NewsListViewController: UIViewController {
                 
         defaultValues()
         newsCategories = NewsCategoriesList().getCategories()
-        
-        
-//        realmService.deleteNews()
+
         networkConnect()
         
 
@@ -80,7 +79,12 @@ class NewsListViewController: UIViewController {
         debugPrint("-----------------------")
         
         
-        refreshControll.attributedTitle = NSAttributedString(string: "updating news")
+        
+        refreshControll.attributedTitle = NSAttributedString(string: "updating news", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        refreshControll.tintColor = .white
+        
+        
+        
         refreshControll.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
         
         
@@ -119,13 +123,12 @@ class NewsListViewController: UIViewController {
 //        category = nil
 //        keyword = nil
 //        debugPrint(category)
-        
+        country = "us"
         defaultValues()
         
         isLoadedNews = false
         news.removeAll()
         tableView.reloadData()
-
         newsRequest()
 
 
@@ -158,7 +161,8 @@ class NewsListViewController: UIViewController {
             debugPrint(link)
             keyword = searchKeyword
         isLoadedNews = false
-         
+            news.removeAll()
+            tableView.reloadData()
 //            isLoadedNews = false
                 newsRequest()
        
@@ -167,29 +171,12 @@ class NewsListViewController: UIViewController {
                  
                  
         }
-             
-        
-        
-        
-        
-        
+
     }
     
 }
 
-extension NewsListViewController {
-    
-    @objc func refreshData() {
-       
-        pageNumber = 1
-        news.removeAll()
-        tableView.reloadData()
-//        realmService.deleteNews()
-        newsRequest()
-        refreshControll.endRefreshing()
-//        add toast update complere
-    }
-}
+
 
 
 extension NewsListViewController {
@@ -211,7 +198,6 @@ extension NewsListViewController {
     
     func defaultValues() {
         isSearchNews = false
-        country = "us"
         category = ""
         keyword = ""
         pageNumber = 1

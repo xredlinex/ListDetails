@@ -45,8 +45,8 @@
                                                     <action selector="didTapMainNewsActionButton:" destination="gpY-Kv-3QH" eventType="touchUpInside" id="g1D-qK-3Zp"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.on.doc.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0fU-RL-pPD">
-                                                <rect key="frame" x="35" y="13" width="20" height="23.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flame" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0fU-RL-pPD">
+                                                <rect key="frame" x="35" y="14" width="20" height="20.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -623,8 +623,8 @@
         <image name="arrow.left" catalog="system" width="64" height="48"/>
         <image name="arrow.up.doc" catalog="system" width="56" height="64"/>
         <image name="arrowshape.turn.up.right.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="doc.on.doc.fill" catalog="system" width="58" height="64"/>
         <image name="flag.circle" catalog="system" width="64" height="60"/>
+        <image name="flame" catalog="system" width="54" height="64"/>
         <image name="list.dash" catalog="system" width="64" height="42"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="64" height="60"/>
