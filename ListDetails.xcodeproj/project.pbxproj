@@ -30,7 +30,6 @@
 		97932B0023F353140010F339 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932AFF23F353140010F339 /* RealmModel.swift */; };
 		97932B0223F3531F0010F339 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97932B0123F3531F0010F339 /* RealmService.swift */; };
 		97C4452123F5489A00E6828C /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C4452023F5489A00E6828C /* Country.storyboard */; };
-		97C4452523F548D400E6828C /* CountrySortViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C4452423F548D400E6828C /* CountrySortViewController+Extension.swift */; };
 		97C4452723F548E200E6828C /* CountrySortViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C4452623F548E200E6828C /* CountrySortViewController+TableView.swift */; };
 		97C4452B23F5495100E6828C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C4452923F5495100E6828C /* CountryTableViewCell.swift */; };
 		97C4452C23F5495100E6828C /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97C4452A23F5495100E6828C /* CountryTableViewCell.xib */; };
@@ -67,7 +66,6 @@
 		97932AFF23F353140010F339 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		97932B0123F3531F0010F339 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		97C4452023F5489A00E6828C /* Country.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Country.storyboard; sourceTree = "<group>"; };
-		97C4452423F548D400E6828C /* CountrySortViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CountrySortViewController+Extension.swift"; sourceTree = "<group>"; };
 		97C4452623F548E200E6828C /* CountrySortViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CountrySortViewController+TableView.swift"; sourceTree = "<group>"; };
 		97C4452923F5495100E6828C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		97C4452A23F5495100E6828C /* CountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
@@ -109,6 +107,7 @@
 		9789AC4523F3F69D00288637 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				97C4452023F5489A00E6828C /* Country.storyboard */,
 				97932ADD23F34DC10010F339 /* Main.storyboard */,
 			);
 			path = Storyboards;
@@ -206,9 +205,7 @@
 		97C4452823F548E700E6828C /* CountrySelect */ = {
 			isa = PBXGroup;
 			children = (
-				97C4452023F5489A00E6828C /* Country.storyboard */,
 				97C4452E23F549E800E6828C /* CountrySortViewController.swift */,
-				97C4452423F548D400E6828C /* CountrySortViewController+Extension.swift */,
 				97C4452623F548E200E6828C /* CountrySortViewController+TableView.swift */,
 				97C4452D23F5495400E6828C /* CountryCell */,
 			);
@@ -370,7 +367,6 @@
 				97932ADA23F34DC10010F339 /* SceneDelegate.swift in Sources */,
 				97932AEC23F350FC0010F339 /* NewsListViewController.swift in Sources */,
 				97932AF023F3512D0010F339 /* NewsListViewController+TableView.swift in Sources */,
-				97C4452523F548D400E6828C /* CountrySortViewController+Extension.swift in Sources */,
 				97C4452723F548E200E6828C /* CountrySortViewController+TableView.swift in Sources */,
 				9745F5FC23F6DA9E006FE16A /* CategoriesCollectionViewCell.swift in Sources */,
 			);

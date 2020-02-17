@@ -13,7 +13,7 @@ import AlamofireObjectMapper
 import Toast_Swift
 
 class NewsListViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var showCollectionViewHeightConstraint: NSLayoutConstraint!
@@ -46,7 +46,7 @@ class NewsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         newsCategories = NewsCategoriesList().getCategories()
         defaultValues()
         networkConnect()
@@ -63,12 +63,12 @@ class NewsListViewController: UIViewController {
                 news = realmService.getNews()
             }
         }
-  
+        
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
-    
+        
         tableView.addSubview(refreshControll)
         tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
         tableView.delegate = self
@@ -81,7 +81,7 @@ class NewsListViewController: UIViewController {
         super.viewWillAppear(animated)
         searchTextField.text = ""
     }
-
+    
     @IBAction func didTapSelectCountryActionButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Country", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CountrySortViewController") as! CountrySortViewController
@@ -99,8 +99,8 @@ class NewsListViewController: UIViewController {
     
     
     @IBAction func didTapShowCategories(_ sender: Any) {
-       categoriesValues()
-   
+        categoriesValues()
+        
     }
     
     @IBAction func searchNewsActionButton(_ sender: Any) {

@@ -14,6 +14,7 @@ import RealmSwift
 extension NewsListViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchNews()
         searchTextField.resignFirstResponder()
         return true
     }
@@ -97,7 +98,7 @@ extension NewsListViewController {
 extension NewsListViewController {
     
     @objc func refreshData() {
-       
+        
         pageNumber = 1
         news.removeAll()
         tableView.reloadData()

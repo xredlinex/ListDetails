@@ -18,32 +18,21 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         setupForCategoriesCell()
     }
-
 }
-
-
-
 
 extension CategoriesCollectionViewCell {
     
     func setupForCategoriesCell() {
-        
         categoriesView.clipsToBounds = true
         categoriesView.layer.cornerRadius = categoriesView.frame.width / 2
         categoriesView.layer.borderWidth = 2
         categoriesView.layer.borderColor = UIColor.red.cgColor
-        
-        
     }
-    
 }
 
 extension CategoriesCollectionViewCell {
     
     func updateCategoriesCell(_ categories: NewsCategories) {
-        
-        
-        
         categoriesImageView.image = UIImage(named: categories.categoryImage ?? "")
         categoriesTextLalbel.text = categories.categoryName ?? ""
     }

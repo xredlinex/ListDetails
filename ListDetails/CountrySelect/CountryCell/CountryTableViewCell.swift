@@ -10,12 +10,10 @@ import UIKit
 import FlagKit
 
 class CountryTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var countryNameTextLabel: UILabel!
     @IBOutlet weak var countryFlagImageView: UIImageView!
     @IBOutlet weak var countryView: UIView!
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +27,6 @@ extension CountryTableViewCell {
     func showCountry(_ countryCode: String) {
         
         countryFlagImageView.image = Flag(countryCode: countryCode.uppercased())?.image(style: .roundedRect)
-    
         if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: countryCode) {
             countryNameTextLabel.text = name
         } else {
@@ -37,7 +34,6 @@ extension CountryTableViewCell {
         }
     }
 }
-
 
 extension CountryTableViewCell {
     
@@ -60,6 +56,5 @@ extension CountryTableViewCell {
         
         NSLayoutConstraint.activate([blurView.heightAnchor.constraint(equalTo: countryView.heightAnchor),
                                      blurView.widthAnchor.constraint(equalTo: countryView.widthAnchor)])
-
     }
 }

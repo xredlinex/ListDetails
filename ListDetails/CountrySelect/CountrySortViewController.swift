@@ -9,14 +9,14 @@
 import UIKit
 
 class CountrySortViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var countryCodeList = (Countries.CountryCodes.allCases.map { $0.rawValue})
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.register(UINib(nibName: "CountryTableViewCell", bundle: nil), forCellReuseIdentifier: "CountryTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -27,6 +27,4 @@ class CountrySortViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         
     }
-    
-
 }
