@@ -8,18 +8,18 @@ PODS:
     - Kingfisher/Core (= 5.13.0)
   - Kingfisher/Core (5.13.0)
   - ObjectMapper (3.5.1)
-  - Realm (4.3.1):
-    - Realm/Headers (= 4.3.1)
-  - Realm/Headers (4.3.1)
-  - RealmSwift (4.3.1):
-    - Realm (= 4.3.1)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireObjectMapper (~> 5.2)
   - FlagKit
-  - Kingfisher (~> 5.0)
+  - Kingfisher
   - RealmSwift
   - Toast-Swift (~> 5.0.1)
 
@@ -40,10 +40,10 @@ SPEC CHECKSUMS:
   FlagKit: eca7dc89064b0c986302ba9acefad1bf80a435b1
   Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
-  Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
-  RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 086cd329387bf36d3bc24fdc91970d2253cf9899
+PODFILE CHECKSUM: e768db03cfafbc4497618003ae7deb69b126ad4e
 
 COCOAPODS: 1.8.4

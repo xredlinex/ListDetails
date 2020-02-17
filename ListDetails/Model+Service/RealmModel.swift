@@ -42,7 +42,6 @@ class NewsArticlesModel: Object, Mappable {
     @objc dynamic var urlToImage: String?
     @objc dynamic var publishedAt: String?
     @objc dynamic var content: String?
-    var showMoreDescript = false
 
     required convenience init?(map: Map) {
         self.init()
@@ -82,6 +81,9 @@ class NewsArticlesSourseModel: Object, Mappable {
         name    <- map["name"]
      }
 }
+
+
+
 
 
 //class NewsModel: Object, Codable {

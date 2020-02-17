@@ -16,37 +16,45 @@ import Network
 class NewsListViewController: UIViewController {
 
 
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var showCollectionViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainNewsImageView: UIImageView!
+    @IBOutlet weak var categoriesNewsImageView: UIImageView!
+    @IBOutlet weak var searchNewsImageView: UIImageView!
+    
+    @IBOutlet weak var searchBarView: UIView!
+    @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchTextField: UITextField!
     
     let realmService = RealmService.shared
     var news: [NewsArticlesModel] = []
+    var newsCategories: [NewsCategories] = []
     
+    let apikey = "df23a739ff1045119ffd367b733c0c58"
     var keyword: String?
     var category: String?
+    var country: String = "us"
+    var link: String?
+    
+    
     var pageNumber: Int = 1
     var pageSize: Int = 10
     var maxCount: Int = 100
     var isLoadedNews = true
-    
-    let apikey = "439c5ba63c944a2cac581d87e18fc759"
-    
-//    var parameters: [String : Any] = [:]
-    var link = "https://newsapi.org/v2/top-headlines"
-    var country = "us"
-    
-    
-    
-    
-    
+    var isSearchNews = false
     var ifConnect = false
     
     var refreshControll = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+                
+        defaultValues()
+        newsCategories = NewsCategoriesList().getCategories()
         
-        realmService.deleteNews()
+        
+//        realmService.deleteNews()
         networkConnect()
         
 
@@ -65,18 +73,106 @@ class NewsListViewController: UIViewController {
                 news = realmService.getNews()
             }
         }
+        debugPrint("-----------------------")
+        debugPrint(country)
+        debugPrint(link)
+        debugPrint(category)
+        debugPrint("-----------------------")
+        
+        
         refreshControll.attributedTitle = NSAttributedString(string: "updating news")
         refreshControll.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
+        
+        
+        collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.reloadData()
+    
         tableView.addSubview(refreshControll)
         tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
+        
+        searchTextField.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchTextField.text = ""
+    }
+    
+    
+    
     
     @IBAction func didTapSelectCountryActionButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Country", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CountrySortViewController") as! CountrySortViewController
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func didTapMainNewsActionButton(_ sender: Any) {
+//        debugPrint(country, "first")
+//        country = "us"
+//        debugPrint(country, "not first")
+//        debugPrint(category)
+//        category = nil
+//        keyword = nil
+//        debugPrint(category)
+        
+        defaultValues()
+        
+        isLoadedNews = false
+        news.removeAll()
+        tableView.reloadData()
+
+        newsRequest()
+
+
+        
+        
+    }
+    
+    
+    @IBAction func didTapSowSearchActionButton(_ sender: Any) {
+        searchValues()
+        
+    }
+    
+    
+    @IBAction func didTapShowCategories(_ sender: Any) {
+       categoriesValues()
+   
+    }
+    
+    @IBAction func searchNewsActionButton(_ sender: Any) {
+        debugPrint("tap")
+        debugPrint(searchTextField.text)
+        
+        if let searchKeyword = searchTextField.text, searchKeyword != "" {
+//                 link = "http://newsapi.org/v2/everything?"
+//            country.isEmpty = true
+//            category = nil
+            debugPrint("start search")
+            debugPrint(apikey)
+            debugPrint(link)
+            keyword = searchKeyword
+        isLoadedNews = false
+         
+//            isLoadedNews = false
+                newsRequest()
+       
+            
+            
+                 
+                 
+        }
+             
+        
+        
+        
+        
+        
     }
     
 }
@@ -108,4 +204,49 @@ extension NewsListViewController {
             }
         }
     }
+}
+
+
+extension NewsListViewController {
+    
+    func defaultValues() {
+        isSearchNews = false
+        country = "us"
+        category = ""
+        keyword = ""
+        pageNumber = 1
+        link = "https://newsapi.org/v2/top-headlines?"
+        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 600)
+        searchBarHeightConstraint.priority = UILayoutPriority(rawValue: 600)
+        mainNewsImageView.tintColor = .red
+        
+        searchNewsImageView.tintColor = .white
+        categoriesNewsImageView.tintColor = .white
+    }
+    
+    func searchValues() {
+        isSearchNews = true
+        link = "https://newsapi.org/v2/everything?"
+        searchNewsImageView.tintColor = .red
+        mainNewsImageView.tintColor = .white
+        categoriesNewsImageView.tintColor = .white
+        searchBarHeightConstraint.priority = UILayoutPriority(rawValue: 900)
+        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 600)
+        
+    }
+    
+    func categoriesValues() {
+        
+        isSearchNews = false
+        keyword = ""
+        link = "https://newsapi.org/v2/top-headlines?"
+        categoriesNewsImageView.tintColor = .red
+        mainNewsImageView.tintColor = .white
+        searchNewsImageView.tintColor = .white
+        searchBarHeightConstraint.priority = UILayoutPriority(rawValue: 600)
+        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 900)
+    }
+    
+    
+    
 }

@@ -31,11 +31,17 @@ extension CountrySortViewController: UITableViewDelegate, UITableViewDataSource 
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        debugPrint("-----------------------------------------------")
         tableView.deselectRow(at: indexPath, animated: false)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "NewsListViewController") as! NewsListViewController
         viewController.country = countryCodeList[indexPath.row]
+        viewController.link = "https://newsapi.org/v2/top-headlines"
+//        viewController.category = ""
+//        viewController.keyword = ""
+        
+
         navigationController?.pushViewController(viewController, animated: false)
 
     }
@@ -56,3 +62,5 @@ extension CountrySortViewController: UITableViewDelegate, UITableViewDataSource 
         return view
     }
 }
+
+
