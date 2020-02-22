@@ -11,6 +11,7 @@ import RealmSwift
 import Alamofire
 import AlamofireObjectMapper
 import Toast_Swift
+import Network
 
 class NewsListViewController: UIViewController {
     
@@ -40,7 +41,7 @@ class NewsListViewController: UIViewController {
     var maxCount: Int = 100
     var isLoadedNews = true
     var isSearchNews = false
-    var ifConnect = false
+//    var ifConnect: Bool?
     
     var refreshControll = UIRefreshControl()
     
@@ -48,21 +49,9 @@ class NewsListViewController: UIViewController {
         super.viewDidLoad()
         
         newsCategories = NewsCategoriesList().getCategories()
+        networkConnectRequesrt()
         defaultValues()
-        networkConnect()
         refreshCoontrol()
-        
-        if !ifConnect {
-            if news.isEmpty {
-                isLoadedNews = false
-                newsRequest()
-            }
-        } else {
-            if realmService.getNews().isEmpty {
-            } else {
-                news = realmService.getNews()
-            }
-        }
         
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView.delegate = self

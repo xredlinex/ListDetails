@@ -16,6 +16,12 @@ class NewsModel: Object, Mappable {
     dynamic var totalResults: Int?
     dynamic var articles = [NewsArticlesModel]()
     
+    func mapping(map: Map) {
+          status        <- map["status"]
+          totalResults  <- map["totalResults"]
+          articles      <- map["articles"]
+      }
+    
     required convenience init?(map: Map) {
         self.init()
     }
@@ -24,11 +30,7 @@ class NewsModel: Object, Mappable {
         super.init()
     }
     
-    func mapping(map: Map) {
-        status        <- map["status"]
-        totalResults  <- map["totalResults"]
-        articles      <- map["articles"]
-    }
+  
 }
 
 class NewsArticlesModel: Object, Mappable {
@@ -42,14 +44,6 @@ class NewsArticlesModel: Object, Mappable {
     @objc dynamic var publishedAt: String?
     @objc dynamic var content: String?
     
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    required init() {
-        super.init()
-    }
-    
     func mapping(map: Map) {
         sourse              <- map["sourse"]
         author              <- map["author"]
@@ -60,12 +54,6 @@ class NewsArticlesModel: Object, Mappable {
         publishedAt         <- map["publishedAt"]
         content             <- map["content"]
     }
-}
-
-class NewsArticlesSourseModel: Object, Mappable {
-    
-    @objc dynamic var id: String?
-    @objc dynamic var name: String?
     
     required convenience init?(map: Map) {
         self.init()
@@ -74,10 +62,24 @@ class NewsArticlesSourseModel: Object, Mappable {
     required init() {
         super.init()
     }
+}
+
+class NewsArticlesSourseModel: Object, Mappable {
+    
+    @objc dynamic var id: String?
+    @objc dynamic var name: String?
     
     func mapping(map: Map) {
-        id      <- map["id"]
-        name    <- map["name"]
+         id      <- map["id"]
+         name    <- map["name"]
+     }
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    required init() {
+        super.init()
     }
 }
 

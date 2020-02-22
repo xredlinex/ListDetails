@@ -13,7 +13,6 @@ import Alamofire
 import RealmSwift
 import Network
 
-
 extension NewsListViewController {
     
     func newsRequest() {
@@ -51,12 +50,14 @@ extension NewsListViewController {
                                                     self.view.hideToastActivity()
                                                 }
                                             } else {
-                                                self.showErrorAlert("sorry no news recieved")
+                                                self.showErrorAlert("Thats All Falks!")
                                                 self.view.hideToastActivity()
                                             }
                                         } else {
-                                            self.showErrorAlert("server error or bad request")
+                                            self.showErrorAlert("Server Error Or No Internet Connection")
                                             self.view.hideToastActivity()
+                                            self.news = self.realmService.getNews()
+                                            self.tableView.reloadData()
                                         }
                     }
                 } else {
@@ -74,13 +75,17 @@ extension NewsListViewController {
 
 extension NewsListViewController {
     
-    func networkConnect() {
+    func networkConnectRequesrt() {
         
         let monitor = NWPathMonitor()
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
-                self.ifConnect = true
+                self.isLoadedNews = false
+                self.newsRequest()
+            } else {
+                self.view.makeToast("No Intetnet connection", duration: 5.0, position: .top)
             }
         }
+        monitor.start(queue: DispatchQueue.main)
     }
 }
