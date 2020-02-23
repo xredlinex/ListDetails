@@ -24,7 +24,15 @@ extension NewsListViewController {
     
     func mainNews() {
         country = "us"
-        defaultValues()
+        category = ""
+        
+        values(search: false,
+               collectionValue: 600,
+               searchValue: 600,
+               searchColor: .white,
+               mainColor: .white,
+               catColor: .white)
+        
         isLoadedNews = false
         news.removeAll()
         tableView.reloadData()
@@ -47,47 +55,7 @@ extension NewsListViewController {
 
 extension NewsListViewController {
     
-    func defaultValues() {
-        
-        isSearchNews = false
-        category = ""
-        keyword = ""
-        pageNumber = 1
-        link = "https://newsapi.org/v2/top-headlines?"
-        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 600)
-        searchBarHeightConstraint.priority = UILayoutPriority(rawValue: 600)
-        mainNewsImageView.tintColor = .red
-        searchNewsImageView.tintColor = .white
-        categoriesNewsImageView.tintColor = .white
-    }
-    
-    func searchValues() {
-        
-        isSearchNews = true
-        link = "https://newsapi.org/v2/everything?"
-        searchNewsImageView.tintColor = .red
-        mainNewsImageView.tintColor = .white
-        categoriesNewsImageView.tintColor = .white
-        searchBarHeightConstraint.priority = UILayoutPriority(rawValue: 900)
-        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 600)
-    }
-    
-    func categoriesValues() {
-        
-        isSearchNews = false
-        keyword = ""
-        link = "https://newsapi.org/v2/top-headlines?"
-        categoriesNewsImageView.tintColor = .red
-        mainNewsImageView.tintColor = .white
-        searchNewsImageView.tintColor = .white
-        searchBarHeightConstraint.priority = UILayoutPriority(rawValue: 600)
-        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: 900)
-    }
-}
-
-extension NewsListViewController {
-    
-    func refreshCoontrol() {
+    func refreshControl() {
         
         refreshControll.attributedTitle = NSAttributedString(string: "updating news", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         refreshControll.tintColor = .white
@@ -104,5 +72,26 @@ extension NewsListViewController {
         tableView.reloadData()
         newsRequest()
         refreshControll.endRefreshing()
+    }
+}
+
+
+extension NewsListViewController {
+    
+    func values(search: Bool, collectionValue: Float, searchValue: Float, searchColor: UIColor, mainColor: UIColor, catColor: UIColor) {
+        
+        pageNumber = 1
+        isSearchNews = search
+        
+        link = (isSearchNews ? "https://newsapi.org/v2/everything?" : "https://newsapi.org/v2/top-headlines?)")
+        categoriesNewsImageView.tintColor = catColor
+        mainNewsImageView.tintColor = mainColor
+        searchNewsImageView.tintColor = searchColor
+        searchBarHeightConstraint.priority = UILayoutPriority(rawValue: searchValue)
+        showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: collectionValue)
+        
+        if !search {
+            keyword = ""
+        }
     }
 }

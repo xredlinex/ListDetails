@@ -50,8 +50,16 @@ class NewsListViewController: UIViewController {
         
         newsCategories = NewsCategoriesList().getCategories()
         networkConnectRequesrt()
-        defaultValues()
-        refreshCoontrol()
+//        defaultValues()
+        
+        values(search: false,
+               collectionValue: 600,
+               searchValue: 600,
+               searchColor: .white,
+               mainColor: .red,
+               catColor: .white)
+        
+        refreshControl()
         
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView.delegate = self
@@ -83,12 +91,23 @@ class NewsListViewController: UIViewController {
     
     
     @IBAction func didTapSowSearchActionButton(_ sender: Any) {
-        searchValues()
+        values(search: true,
+               collectionValue: 600,
+               searchValue: 900,
+               searchColor: .red,
+               mainColor: .white,
+               catColor: .white)
     }
     
     
     @IBAction func didTapShowCategories(_ sender: Any) {
-        categoriesValues()
+//        categoriesValues()
+        values(search: false,
+        collectionValue: 900,
+        searchValue: 600,
+        searchColor: .white,
+        mainColor: .white,
+        catColor: .red)
         
     }
     
