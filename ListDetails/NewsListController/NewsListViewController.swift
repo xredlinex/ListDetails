@@ -33,7 +33,7 @@ class NewsListViewController: UIViewController {
     let apikey = "df23a739ff1045119ffd367b733c0c58"
     var keyword: String?
     var category: String?
-    var country: String = "us"
+    var country = "us"
     var link: String?
     
     var pageNumber: Int = 1
@@ -41,7 +41,6 @@ class NewsListViewController: UIViewController {
     var maxCount: Int = 100
     var isLoadedNews = true
     var isSearchNews = false
-//    var ifConnect: Bool?
     
     var refreshControll = UIRefreshControl()
     
@@ -50,16 +49,10 @@ class NewsListViewController: UIViewController {
         
         newsCategories = NewsCategoriesList().getCategories()
         networkConnectRequesrt()
-//        defaultValues()
-        
-        values(search: false,
-               collectionValue: 600,
-               searchValue: 600,
-               searchColor: .white,
-               mainColor: .red,
-               catColor: .white)
-        
         refreshControl()
+        values(search: false, collectionValue: 600, searchValue: 600, searchColor: .white, mainColor: .red, catColor: .white)
+        
+        
         
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView.delegate = self
@@ -72,6 +65,7 @@ class NewsListViewController: UIViewController {
         tableView.dataSource = self
         
         searchTextField.delegate = self
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,23 +85,12 @@ class NewsListViewController: UIViewController {
     
     
     @IBAction func didTapSowSearchActionButton(_ sender: Any) {
-        values(search: true,
-               collectionValue: 600,
-               searchValue: 900,
-               searchColor: .red,
-               mainColor: .white,
-               catColor: .white)
+        values(search: true, collectionValue: 600, searchValue: 900, searchColor: .red, mainColor: .white, catColor: .white)
     }
     
     
     @IBAction func didTapShowCategories(_ sender: Any) {
-//        categoriesValues()
-        values(search: false,
-        collectionValue: 900,
-        searchValue: 600,
-        searchColor: .white,
-        mainColor: .white,
-        catColor: .red)
+        values(search: false, collectionValue: 900, searchValue: 600, searchColor: .white, mainColor: .white, catColor: .red)
         
     }
     

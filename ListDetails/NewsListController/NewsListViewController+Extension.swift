@@ -14,8 +14,9 @@ import RealmSwift
 extension NewsListViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+                searchTextField.resignFirstResponder()
         searchNews()
-        searchTextField.resignFirstResponder()
+
         return true
     }
 }
@@ -23,16 +24,10 @@ extension NewsListViewController: UITextFieldDelegate {
 extension NewsListViewController {
     
     func mainNews() {
+        
         country = "us"
         category = ""
-        
-        values(search: false,
-               collectionValue: 600,
-               searchValue: 600,
-               searchColor: .white,
-               mainColor: .white,
-               catColor: .white)
-        
+        values(search: false, collectionValue: 600, searchValue: 600, searchColor: .white, mainColor: .red, catColor: .white)
         isLoadedNews = false
         news.removeAll()
         tableView.reloadData()
@@ -80,9 +75,11 @@ extension NewsListViewController {
     
     func values(search: Bool, collectionValue: Float, searchValue: Float, searchColor: UIColor, mainColor: UIColor, catColor: UIColor) {
         
+        if !search {
+            keyword = ""
+        }
         pageNumber = 1
         isSearchNews = search
-        
         link = (isSearchNews ? "https://newsapi.org/v2/everything?" : "https://newsapi.org/v2/top-headlines?)")
         categoriesNewsImageView.tintColor = catColor
         mainNewsImageView.tintColor = mainColor
@@ -90,8 +87,6 @@ extension NewsListViewController {
         searchBarHeightConstraint.priority = UILayoutPriority(rawValue: searchValue)
         showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: collectionValue)
         
-        if !search {
-            keyword = ""
-        }
+        
     }
 }

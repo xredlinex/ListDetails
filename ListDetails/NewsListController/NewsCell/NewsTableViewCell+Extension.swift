@@ -26,19 +26,19 @@ extension NewsTableViewCell {
         }
     }
     
-    func newNewsDate(_ date: String) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.calendar = Calendar(identifier: .iso8601)
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'hh:mm:ssZ"
-        let calendar = Calendar.current
-        
-        guard let dateNews = dateFormatter.date(from: date) else { return }
-        
-        if calendar.isDateInToday(dateNews) || calendar.isDateInYesterday(dateNews) {
-            showFreshNewsHeightContstraint.priority = UILayoutPriority(rawValue: 900)
-            freshNewsLabel.clipsToBounds = true
-            freshNewsLabel.layer.cornerRadius = 6
-        }
-    }
+//    func newNewsDate(_ date: String) {
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.calendar = Calendar(identifier: .iso8601)
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'hh:mm:ssZ"
+//        let calendar = Calendar.current
+//        
+//        guard let dateNews = dateFormatter.date(from: date) else { return }
+////
+////        if calendar.isDateInToday(dateNews) || calendar.isDateInYesterday(dateNews) {
+////            showFreshNewsHeightContstraint.priority = UILayoutPriority(rawValue: 900)
+////            freshNewsLabel.clipsToBounds = true
+////            freshNewsLabel.layer.cornerRadius = 6
+////        }
+//    }
 }
