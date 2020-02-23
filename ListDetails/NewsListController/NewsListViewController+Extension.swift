@@ -86,6 +86,8 @@ extension NewsListViewController {
         searchNewsImageView.tintColor = searchColor
         searchBarHeightConstraint.priority = UILayoutPriority(rawValue: searchValue)
         showCollectionViewHeightConstraint.priority = UILayoutPriority(rawValue: collectionValue)
+        searchBarView.clipsToBounds = true
+        searchBarView.layer.cornerRadius = 12
         
         
     }
