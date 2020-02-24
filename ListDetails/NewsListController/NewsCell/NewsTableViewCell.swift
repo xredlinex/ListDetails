@@ -16,11 +16,8 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var newsTitleTextLabel: UILabel!
     @IBOutlet weak var newsDescriptionTextLabel: UILabel!
-//    @IBOutlet weak var newMarkTextLabel: NSLayoutConstraint!
     @IBOutlet weak var newsAuthorTextLabel: UILabel!
     @IBOutlet weak var newsPublishAtTextLabel: UILabel!
-//    @IBOutlet weak var freshNewsLabel: UILabel!
-//    @IBOutlet weak var showFreshNewsHeightContstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,19 +31,17 @@ extension NewsTableViewCell {
     func updateNewsCell(_ news: NewsArticlesModel) {
         
         if let imgUrl = news.urlToImage {
-            if let url = URL(string: imgUrl) {
-                newsImageView.kf.setImage(with: url)
-            } else {
-                newsImageView.image = UIImage(named: "blankImage")
-            }
+            let url = URL(string: imgUrl)
+            newsImageView.kf.setImage(with: url)
+        } else {
+            newsImageView.image = UIImage(named: "blankImage")
         }
-//        newNewsDate(news.publishedAt ?? "")
+        
         newsTitleTextLabel.text = news.title ?? "-"
         newsDescriptionTextLabel.text = news.newsDescription ?? "-"
         newsAuthorTextLabel.text = news.author ?? "-"
         newsPublishAtTextLabel.text = converDate(news.publishedAt ?? "")
         newsFrameView.clipsToBounds = true
         newsFrameView.layer.cornerRadius = 12
-        
     }
 }

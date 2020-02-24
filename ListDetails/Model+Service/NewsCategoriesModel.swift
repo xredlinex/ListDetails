@@ -17,34 +17,34 @@ class NewsCategories {
 class NewsCategoriesList {
     
     func getCategories() -> [NewsCategories] {
-        let one = NewsCategories()
-        one.categoryName = "business"
-        one.categoryImage = "business"
+        let business = NewsCategories()
+        business.categoryName = "business"
+        business.categoryImage = "business"
         
-        let two = NewsCategories()
-        two.categoryName = "entertainment"
-        two.categoryImage = "entertainment"
+        let entertainment = NewsCategories()
+        entertainment.categoryName = "entertainment"
+        entertainment.categoryImage = "entertainment"
         
-        let three = NewsCategories()
-        three.categoryName = "general"
-        three.categoryImage = "general"
+        let general = NewsCategories()
+        general.categoryName = "general"
+        general.categoryImage = "general"
         
-        let four = NewsCategories()
-        four.categoryName = "health"
-        four.categoryImage = "health"
+        let health = NewsCategories()
+        health.categoryName = "health"
+        health.categoryImage = "health"
         
-        let five = NewsCategories()
-        five.categoryName = "science"
-        five.categoryImage = "science"
+        let science = NewsCategories()
+        science.categoryName = "science"
+        science.categoryImage = "science"
         
-        let six = NewsCategories()
-        six.categoryName = "sports"
-        six.categoryImage = "sports"
+        let sports = NewsCategories()
+        sports.categoryName = "sports"
+        sports.categoryImage = "sports"
         
-        let seven = NewsCategories()
-        seven.categoryName = "technology"
-        seven.categoryImage = "technology"
+        let technology = NewsCategories()
+        technology.categoryName = "technology"
+        technology.categoryImage = "technology"
         
-        return [one, two, three, four, five, six, seven]
+        return [business, entertainment, general, health, science, sports, technology]
     }
 }

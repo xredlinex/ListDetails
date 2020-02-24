@@ -25,6 +25,5 @@ class CountrySortViewController: UIViewController {
     
     @IBAction func didTapGoBackActionButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-        
     }
 }

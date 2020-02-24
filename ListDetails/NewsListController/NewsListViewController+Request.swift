@@ -46,26 +46,25 @@ extension NewsListViewController {
                                                 self.realmService.writeNews(self.news)
                                                 DispatchQueue.main.async {
                                                     self.tableView.reloadData()
-                                                    self.view.hideAllToasts()
                                                     self.view.hideToastActivity()
                                                 }
                                             } else {
-                                                self.showErrorAlert("Thats All Falks!")
+                                                self.presentErrorAlert(title: "Sorry!", self.errorAlert.errorKey(.noNews))
                                                 self.view.hideToastActivity()
                                             }
                                         } else {
-                                            self.showErrorAlert("Server Error Or No Internet Connection")
+                                            self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noInternet))
                                             self.view.hideToastActivity()
                                             self.news = self.realmService.getNews()
                                             self.tableView.reloadData()
                                         }
                     }
                 } else {
-                    self.showErrorAlert("bad request, no url")
+                    self.presentErrorAlert(title: "Error", errorAlert.errorKey(.noLink))
                     self.view.hideToastActivity()
                 }
             } else {
-                self.showErrorAlert("faral error, sorry")
+                self.presentErrorAlert(title: "Error", errorAlert.errorKey(.noLink))
                 self.view.hideToastActivity()
             }
         }
@@ -83,7 +82,7 @@ extension NewsListViewController {
                 self.isLoadedNews = false
                 self.newsRequest()
             } else {
-                self.view.makeToast("No Intetnet connection", duration: 5.0, position: .top)
+                self.view.makeToast(self.errorAlert.errorKey(.noInternet), duration: 5.0, position: .top)
             }
         }
         monitor.start(queue: DispatchQueue.main)

@@ -21,7 +21,6 @@ extension NewsDetailViewController {
         } else {
             newsArticleImageView.image = UIImage(named: "blankImage")
         }
-        
         newsPublishAtTextLabel.text = converDate(newsArticle.publishedAt ?? "")
         newsAuthorTextLabel.text = newsArticle.author ?? ""
         newsTitleTextLabel.text = newsArticle.title ?? ""

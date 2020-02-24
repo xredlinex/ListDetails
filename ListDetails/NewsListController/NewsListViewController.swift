@@ -43,6 +43,7 @@ class NewsListViewController: UIViewController {
     var isSearchNews = false
     
     var refreshControll = UIRefreshControl()
+    var errorAlert = AlertErrors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +51,7 @@ class NewsListViewController: UIViewController {
         newsCategories = NewsCategoriesList().getCategories()
         networkConnectRequesrt()
         refreshControl()
-        values(search: false, collectionValue: 600, searchValue: 600, searchColor: .white, mainColor: .red, catColor: .white)
-        
-        
+        loadNewsValues(search: false, collectionValue: 600, searchValue: 600, searchColor: .white, mainColor: .red, catColor: .white)
         
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView.delegate = self
@@ -65,7 +64,6 @@ class NewsListViewController: UIViewController {
         tableView.dataSource = self
         
         searchTextField.delegate = self
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,17 +78,17 @@ class NewsListViewController: UIViewController {
     }
     
     @IBAction func didTapMainNewsActionButton(_ sender: Any) {
-        mainNews()
+        loadMainNews()
     }
     
     
     @IBAction func didTapSowSearchActionButton(_ sender: Any) {
-        values(search: true, collectionValue: 600, searchValue: 900, searchColor: .red, mainColor: .white, catColor: .white)
+        loadNewsValues(search: true, collectionValue: 600, searchValue: 900, searchColor: .red, mainColor: .white, catColor: .white)
     }
     
     
     @IBAction func didTapShowCategories(_ sender: Any) {
-        values(search: false, collectionValue: 900, searchValue: 600, searchColor: .white, mainColor: .white, catColor: .red)
+        loadNewsValues(search: false, collectionValue: 900, searchValue: 600, searchColor: .white, mainColor: .white, catColor: .red)
         
     }
     

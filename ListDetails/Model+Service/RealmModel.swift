@@ -29,8 +29,6 @@ class NewsModel: Object, Mappable {
     required init() {
         super.init()
     }
-    
-  
 }
 
 class NewsArticlesModel: Object, Mappable {

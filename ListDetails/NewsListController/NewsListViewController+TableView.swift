@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//  MARK: - TABLE VIEW - TABLE NEWS - 
 extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,25 +46,7 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        var newsCatText: String?
-        if category == "" && isSearchNews == false {
-            newsCatText = "Top News"
-        } else if isSearchNews == true {
-            newsCatText = "search news"
-        } else if category != "" {
-            newsCatText = category
-        }
-        
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-        let label = UILabel(frame: view.frame)
-        label.text = newsCatText
-        label.textAlignment = .center
-        label.textColor = .white
-        label.layer.backgroundColor = UIColor(red: 43/255, green: 46/255, blue: 65/255, alpha: 1).cgColor
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.text = label.text?.uppercased()
-        view.addSubview(label)
-        return view
+        return headerView()
     }
 }
+
