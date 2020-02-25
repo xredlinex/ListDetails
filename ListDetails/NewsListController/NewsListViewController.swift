@@ -9,9 +9,10 @@
 import UIKit
 import RealmSwift
 import Alamofire
-import AlamofireObjectMapper
+//import AlamofireObjectMapper
 import Toast_Swift
 import Network
+import FlagKit
 
 
 class NewsListViewController: UIViewController {
@@ -32,6 +33,8 @@ class NewsListViewController: UIViewController {
     var newsCategories: [NewsCategories] = []
     
     let apikey = "df23a739ff1045119ffd367b733c0c58"
+    var parameters: [String : Any] = [:]
+    
     var keyword: String?
     var category: String?
     var country = "us"
@@ -52,8 +55,11 @@ class NewsListViewController: UIViewController {
         super.viewDidLoad()
         
         newsCategories = NewsCategoriesList().getCategories()
+        
+        getParameters(.topNews)
         networkConnectRequesrt()
         refreshControl()
+        
         loadNewsValues(search: false, collectionValue: 600, searchValue: 600, searchColor: .white, mainColor: .red, catColor: .white)
         
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")

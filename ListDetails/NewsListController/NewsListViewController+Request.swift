@@ -15,6 +15,64 @@ import Network
 
 extension NewsListViewController {
     
+    func newNewsRequest() {
+        
+        view.makeToastActivity(.center)
+        debugPrint("star request")
+        if !isLoadedNews {
+            if let linkCorrect = link {
+                let url = URL(string: linkCorrect)
+                if let urlCorrect = url{
+                    Alamofire.request(urlCorrect,
+                                      method: .get,
+                                      parameters: parameters,
+                                      encoding: URLEncoding.default,
+                                      headers: ["X-Api-Key" : apikey]).responseData { (response) in
+                                        debugPrint("request parameters")
+                                        debugPrint(self.parameters)
+                                        debugPrint(self.link)
+                                        if let data = response.result.value {
+                                            do {
+                                                let newsModel = try JSONDecoder().decode(NewsModel.self, from: data)
+                                                if let articles = newsModel.articles {
+                                                   debugPrint(articles)
+                                                    if articles.count != 0 {
+                    
+                                                        self.news.append(contentsOf: articles)
+                                                        self.writeNewsRealm()
+                                                        DispatchQueue.main.async {
+                                                            self.tableView.reloadData()
+                                                            self.view.hideToastActivity()
+                                                        }
+                                                    } else {
+                                                        self.presentErrorAlert(title: "Sorry!", self.errorAlert.errorKey(.noNews))
+                                                        self.view.hideToastActivity()
+                                                    }
+                                                    
+                                                } else {
+                                                    debugPrint("no reciebe art")
+                                                    self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noInternet))
+                                                    self.view.hideToastActivity()
+                                                }
+                                                
+                                            } catch  {
+                                                debugPrint("error")
+                                            }
+                    }
+                    }
+                }
+            } else {
+                self.presentErrorAlert(title: "Error", errorAlert.errorKey(.noLink))
+                self.view.hideToastActivity()
+            }
+        }
+    }
+}
+
+
+/*
+extension NewsListViewController {
+    
     func newsRequest() {
         
         view.makeToastActivity(.center)
@@ -62,10 +120,7 @@ extension NewsListViewController {
                                       parameters: parameters,
                                       encoding: URLEncoding.default,
                                       headers: ["X-Api-Key" : apikey]).responseData { (response) in
-                                        debugPrint(parameters)
-                                        debugPrint("one requeset")
                                         if let data = response.result.value {
-                                            
                                             do {
                                                 let newsModel = try JSONDecoder().decode(NewsModel.self, from: data)
                                                 if let articles = newsModel.articles {
@@ -78,8 +133,6 @@ extension NewsListViewController {
                                                             self.tableView.reloadData()
                                                             self.view.hideToastActivity()
                                                         }
-                                                        
-                                                        
                                                     } else {
                                                         self.presentErrorAlert(title: "Sorry!", self.errorAlert.errorKey(.noNews))
                                                         self.view.hideToastActivity()
@@ -145,7 +198,7 @@ extension NewsListViewController {
         }
     }
 }
-
+*/
 
 extension NewsListViewController {
     
@@ -156,7 +209,8 @@ extension NewsListViewController {
             if path.status == .satisfied {
 //                self.loadMainNews()
                 self.isLoadedNews = false
-                self.newsRequest()
+//                self.newsRequest()
+                self.newNewsRequest()
             } else {
                 debugPrint("try load news from memory")
                 self.view.makeToast(self.errorAlert.errorKey(.noInternet), duration: 5.0, position: .top)
@@ -172,18 +226,15 @@ extension NewsListViewController {
     
     func writeNewsRealm() {
         
-        debugPrint("starconvert")
         let realmNews = convertToRealmModel(fromArticlesModel: news)
         self.realmService.deleteNews()
         self.realmService.writeNews(realmNews)
-        debugPrint("end write")
     }
     
     func getNewsRealm() {
-        debugPrint("startload")
+        
         let realmNews = self.realmService.getNews()
         news = convertToNewsModel(fromRealmArticles: realmNews)
-        debugPrint("end load")
     }
 }
 
@@ -255,9 +306,48 @@ extension NewsListViewController {
             newsArticlesModel.source = newsArticlesSourceModel
             news.append(newsArticlesModel)
         }
-    
         return news
     }
-    
 }
+
+//
+//class AlamofireParameters {
+//        
+//        enum ReqParameters {
+//            case search
+//            case category
+//            case topnews
+//            
+//        }
+//        
+//    
+//        
+//    func getparameters(req: ReqParameters) {
+//        
+//    
+//        switch req {
+//        case .search:
+//            link = "https://newsapi.org/v2/everything?"
+//            parameters = ["q" : keyword ?? "",
+//                          "pageSize" : pageSize,
+//                          "page" : pageNumber]
+//        case .category:
+//            link = "https://newsapi.org/v2/top-headlines?"
+//            parameters = ["country" : country,
+//                          "page" : pageNumber,
+//                          "category" : category ?? "",
+//                          "pageSize": pageSize]
+//        case .topNews:
+//            link = "https://newsapi.org/v2/top-headlines?"
+//            parameters = ["country" : country,
+//                          "page": pageNumber,
+//                          "pageSize" : pageSize]
+//            
+//        }
+//    
+//
+//    
+//    }
+//    
+//}
 

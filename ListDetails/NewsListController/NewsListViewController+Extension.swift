@@ -11,18 +11,50 @@ import AlamofireObjectMapper
 import Alamofire
 import RealmSwift
 
+
+
+extension NewsListViewController {
+    
+    enum RequestParametes {
+        
+        case search
+        case category
+        case topNews
+        
+    }
+    
+    func getParameters(_ req: RequestParametes) {
+        switch req {
+        case .search:
+            link = "https://newsapi.org/v2/everything?"
+            parameters = ["q" : keyword ?? "",
+                          "pageSize" : pageSize,
+                          "page" : pageNumber]
+        case .category:
+            link = "https://newsapi.org/v2/top-headlines?"
+            parameters = ["country" : country,
+                          "page" : pageNumber,
+                          "category" : category ?? "",
+                          "pageSize": pageSize]
+        case .topNews:
+            link = "https://newsapi.org/v2/top-headlines?"
+            parameters = ["country" : country,
+                          "page": pageNumber,
+                          "pageSize" : pageSize]
+            
+        }
+    }
+}
+
 //  MARK:- CUSTOM TABBAR VALUES - 
 extension NewsListViewController {
     
     func loadNewsValues(search: Bool, collectionValue: Float, searchValue: Float, searchColor: UIColor, mainColor: UIColor, catColor: UIColor) {
         
-        if !search {
-            keyword = ""
-        }
+
+
         pageNumber = 1
         isSearchNews = search
-        link = (isSearchNews ? "https://newsapi.org/v2/everything?" : "https://newsapi.org/v2/top-headlines?")
-        
         categoriesNewsImageView.tintColor = catColor
         mainNewsImageView.tintColor = mainColor
         searchNewsImageView.tintColor = searchColor
@@ -37,45 +69,12 @@ extension NewsListViewController {
 extension NewsListViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchTextField.resignFirstResponder()
-//
         searchNews()
         return true
     }
 }
 
-//  MARK: - SEARCH NEWS AND LOAD MAIN NEWS -
-extension NewsListViewController {
-    
-    func loadMainNews() {
-        debugPrint("load main news")
-        country = "us"
-        category = ""
-        loadNewsValues(search: false, collectionValue: 600, searchValue: 600, searchColor: .white, mainColor: .red, catColor: .white)
-        news.removeAll()
-        tableView.reloadData()
-//        isLoadedNews = false
-//        newsRequest()
-        networkConnectRequesrt()
-    }
-    
-    func searchNews() {
-        
-        if let searchKeyword = searchTextField.text, searchKeyword != "" {
-            debugPrint("load search news")
-            keyword = searchKeyword
-            searchTextField.text = ""
-            searchTextField.resignFirstResponder()
-//            isLoadedNews = false
-            news.removeAll()
-//            newsRequest()
-            networkConnectRequesrt()
-            
-        } else {
-            presentErrorAlert(title: "Error", errorAlert.errorKey(.emtyField))
-        }
-    }
-}
+
 
 //  MARK: - REFRESH CONTROL - 
 extension NewsListViewController {
@@ -91,7 +90,6 @@ extension NewsListViewController {
         
         pageNumber = 1
         news.removeAll()
-//        newsRequest()
         networkConnectRequesrt()
         refreshControll.endRefreshing()
     }
@@ -111,19 +109,31 @@ extension NewsListViewController {
 //  MARK: -  NEWS HEADER NAME -
 extension NewsListViewController {
     
+    
+//    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EDIT   !!!!!!!!!!!!!!!!!!!!!!!!!!!!
     func showHeaderTitle() -> String {
      
-//        re-edit logic !!!!!!!!!
         var newsCatText = "TOP NEWS"
+        var newsCountry = ""
+        
+        if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: country) {
+            newsCountry = name
+        }
+        
+        
+//        re-edit logic !!!!!!!!!
+        
         if category == "" && !isSearchNews {
-            newsCatText = "TOP NEWS"
+            newsCatText = "TOP NEWS \(newsCountry)"
         } else if isSearchNews == true {
             newsCatText = "SEARCH NEWS"
         } else if category != "" {
-            newsCatText = category ?? "TOP NEWS"/* + country*/
+            newsCatText = "\(category ?? ""), \(newsCountry)"
         }
         
         return newsCatText
+
+        
     }
     
     func headerView() -> UIView {
@@ -148,12 +158,47 @@ extension NewsListViewController {
 extension NewsListViewController {
     
     func didSelectCategoty(_ categoryName: String) {
-        country = ""
+        
         pageNumber = 1
         category = categoryName
+        getParameters(.category)
         news.removeAll()
-//        newsRequest()
         networkConnectRequesrt()
+        debugPrint(parameters)
         tableView.reloadData()
+    }
+}
+
+
+//  MARK: - SEARCH NEWS AND LOAD MAIN NEWS -
+extension NewsListViewController {
+    
+    func loadMainNews() {
+        pageNumber = 1
+        getParameters(.topNews)
+        
+        loadNewsValues(search: false,
+                       collectionValue: 600,
+                       searchValue: 600,
+                       searchColor: .white,
+                       mainColor: .red,
+                       catColor: .white)
+        news.removeAll()
+        tableView.reloadData()
+        networkConnectRequesrt()
+    }
+    
+    func searchNews() {
+        
+        if let searchKeyword = searchTextField.text, searchKeyword != "" {
+            keyword = searchKeyword
+            getParameters(.search)
+            searchTextField.text = ""
+            searchTextField.resignFirstResponder()
+            news.removeAll()
+            networkConnectRequesrt()
+        } else {
+            presentErrorAlert(title: "Error", errorAlert.errorKey(.emtyField))
+        }
     }
 }
