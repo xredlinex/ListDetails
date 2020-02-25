@@ -13,6 +13,7 @@ import AlamofireObjectMapper
 import Toast_Swift
 import Network
 
+
 class NewsListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -44,6 +45,8 @@ class NewsListViewController: UIViewController {
     
     var refreshControll = UIRefreshControl()
     var errorAlert = AlertErrors()
+    
+     var countryCodeList = (Countries.CountryCodes.allCases.map { $0.rawValue})
     
     override func viewDidLoad() {
         super.viewDidLoad()

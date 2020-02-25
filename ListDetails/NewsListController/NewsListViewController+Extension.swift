@@ -22,6 +22,7 @@ extension NewsListViewController {
         pageNumber = 1
         isSearchNews = search
         link = (isSearchNews ? "https://newsapi.org/v2/everything?" : "https://newsapi.org/v2/top-headlines?")
+        
         categoriesNewsImageView.tintColor = catColor
         mainNewsImageView.tintColor = mainColor
         searchNewsImageView.tintColor = searchColor
@@ -37,6 +38,7 @@ extension NewsListViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.resignFirstResponder()
+//
         searchNews()
         return true
     }
@@ -52,8 +54,9 @@ extension NewsListViewController {
         loadNewsValues(search: false, collectionValue: 600, searchValue: 600, searchColor: .white, mainColor: .red, catColor: .white)
         news.removeAll()
         tableView.reloadData()
-        isLoadedNews = false
-        newsRequest()
+//        isLoadedNews = false
+//        newsRequest()
+        networkConnectRequesrt()
     }
     
     func searchNews() {
@@ -61,9 +64,13 @@ extension NewsListViewController {
         if let searchKeyword = searchTextField.text, searchKeyword != "" {
             debugPrint("load search news")
             keyword = searchKeyword
-            isLoadedNews = false
+            searchTextField.text = ""
+            searchTextField.resignFirstResponder()
+//            isLoadedNews = false
             news.removeAll()
-            newsRequest()
+//            newsRequest()
+            networkConnectRequesrt()
+            
         } else {
             presentErrorAlert(title: "Error", errorAlert.errorKey(.emtyField))
         }
@@ -84,7 +91,8 @@ extension NewsListViewController {
         
         pageNumber = 1
         news.removeAll()
-        newsRequest()
+//        newsRequest()
+        networkConnectRequesrt()
         refreshControll.endRefreshing()
     }
 }
@@ -104,14 +112,15 @@ extension NewsListViewController {
 extension NewsListViewController {
     
     func showHeaderTitle() -> String {
-        
+     
+//        re-edit logic !!!!!!!!!
         var newsCatText = "TOP NEWS"
-        if category == "" && isSearchNews == false {
+        if category == "" && !isSearchNews {
             newsCatText = "TOP NEWS"
         } else if isSearchNews == true {
             newsCatText = "SEARCH NEWS"
         } else if category != "" {
-            newsCatText = category ?? "TOP NEWS"
+            newsCatText = category ?? "TOP NEWS"/* + country*/
         }
         
         return newsCatText
@@ -143,7 +152,8 @@ extension NewsListViewController {
         pageNumber = 1
         category = categoryName
         news.removeAll()
-        newsRequest()
+//        newsRequest()
+        networkConnectRequesrt()
         tableView.reloadData()
     }
 }

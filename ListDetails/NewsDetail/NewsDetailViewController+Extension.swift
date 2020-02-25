@@ -24,7 +24,7 @@ extension NewsDetailViewController {
         newsPublishAtTextLabel.text = converDate(newsArticle.publishedAt ?? "")
         newsAuthorTextLabel.text = newsArticle.author ?? ""
         newsTitleTextLabel.text = newsArticle.title ?? ""
-        newsDescriptipnTextLabel.text = newsArticle.newsDescription
+        newsDescriptipnTextLabel.text = newsArticle.description
         newsContentTextLAbel.text = newsArticle.content ?? ""
     }
 }

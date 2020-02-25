@@ -11,6 +11,7 @@ import UIKit
 
 extension UIView {
     
+//     NEED TO RE EDIT  in one !!!!!!!!!
     func setupForCell() {
         let view = self
         let blurEffect = UIBlurEffect(style: .dark)
