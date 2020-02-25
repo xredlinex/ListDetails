@@ -26,17 +26,21 @@ extension NewsListViewController {
     func getParameters(_ req: RequestParametes) {
         switch req {
         case .search:
+            headerTitle = "SEARCH NEWS for key: \(keyword ?? "")"
             link = "https://newsapi.org/v2/everything?"
             parameters = ["q" : keyword ?? "",
                           "pageSize" : pageSize,
                           "page" : pageNumber]
         case .category:
+            headerTitle = category
             link = "https://newsapi.org/v2/top-headlines?"
             parameters = ["country" : country,
                           "page" : pageNumber,
-                          "category" : category ?? "",
+                          "category" : category,
                           "pageSize": pageSize]
+            
         case .topNews:
+            headerTitle = "\(getCountryName(country)) TOP NEWS"
             link = "https://newsapi.org/v2/top-headlines?"
             parameters = ["country" : country,
                           "page": pageNumber,
@@ -51,7 +55,7 @@ extension NewsListViewController {
     
     func loadNewsValues(search: Bool, collectionValue: Float, searchValue: Float, searchColor: UIColor, mainColor: UIColor, catColor: UIColor) {
         pageNumber = 1
-        isSearchNews = search
+//        isSearchNews = search
         categoriesNewsImageView.tintColor = catColor
         mainNewsImageView.tintColor = mainColor
         searchNewsImageView.tintColor = searchColor
@@ -106,38 +110,47 @@ extension NewsListViewController {
 //  MARK: -  NEWS HEADER NAME -
 extension NewsListViewController {
     
+    func getCountryName(_ country: String) -> String{
+        if let countryName = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: country) {
+            return countryName
+        } else {
+            return country
+        }
+    }
+    
     
 //    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EDIT   !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    func showHeaderTitle() -> String {
-     
-        var newsCatText = "TOP NEWS"
-        var newsCountry = ""
-        
-        if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: country) {
-            newsCountry = name
-        }
-        
-        
-//        re-edit logic !!!!!!!!!
-        
-        if category == "" && !isSearchNews {
-            newsCatText = "TOP NEWS \(newsCountry)"
-        } else if isSearchNews == true {
-            newsCatText = "SEARCH NEWS"
-        } else if category != "" {
-            newsCatText = "\(category ?? ""), \(newsCountry)"
-        }
-        
-        return newsCatText
-
-        
-    }
+//    func showHeaderTitleOLD() -> String {
+//     
+//        var newsCatText = "TOP NEWS"
+//        var newsCountry = ""
+//        
+//        if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: country) {
+//            newsCountry = name
+//        }
+//        
+//        
+////        re-edit logic !!!!!!!!!
+//        
+//        if category == "" && !isSearchNews {
+//            newsCatText = "TOP NEWS \(newsCountry)"
+//        } else if isSearchNews == true {
+//            newsCatText = "SEARCH NEWS"
+//        } else if category != "" {
+//            newsCatText = "\(category ?? ""), \(newsCountry)"
+//        }
+//        
+//        return newsCatText
+//
+//        
+//    }
     
     func headerView() -> UIView {
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         let label = UILabel(frame: view.frame)
-        label.text = showHeaderTitle()
+//        label.text = showHeaderTitleOLD()
+        label.text = headerTitle
         label.textAlignment = .center
         label.textColor = .white
         label.layer.backgroundColor = UIColor(red: 43/255, green: 46/255, blue: 65/255, alpha: 1).cgColor
@@ -163,11 +176,6 @@ extension NewsListViewController {
         networkConnectRequesrt()
         tableView.reloadData()
     }
-}
-
-
-//  MARK: - SEARCH NEWS AND LOAD MAIN NEWS -
-extension NewsListViewController {
     
     func loadMainNews() {
         
@@ -193,9 +201,20 @@ extension NewsListViewController {
             searchTextField.text = ""
             searchTextField.resignFirstResponder()
             news.removeAll()
+            tableView.reloadData()
             networkConnectRequesrt()
         } else {
             presentErrorAlert(title: "Error", errorAlert.errorKey(.emtyField))
         }
     }
+}
+
+
+extension NewsListViewController {
+    
+//    func showHeaderTitle() -> String {
+//        
+//        
+//        
+//    }
 }

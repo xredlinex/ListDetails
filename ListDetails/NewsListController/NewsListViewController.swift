@@ -36,15 +36,16 @@ class NewsListViewController: UIViewController {
     var parameters: [String : Any] = [:]
     
     var keyword: String?
-    var category: String?
-    var country = "us"
+    var category: String = ""
+    var country: String = "us"
     var link: String?
+    var headerTitle: String = "TOP NEWS"
     
     var pageNumber: Int = 1
     var pageSize: Int = 10
     var maxCount: Int = 100
     var isLoadedNews = true
-    var isSearchNews = false
+//    var isSearchNews = false
     
     var refreshControll = UIRefreshControl()
     var errorAlert = AlertErrors()
