@@ -24,7 +24,7 @@ extension CategoriesCollectionViewCell {
     
     func updateCategoriesCell(_ categories: NewsCategories) {
         categoriesImageView.image = UIImage(named: categories.categoryImage ?? "")
-        categoriesTextLalbel.text = categories.categoryName ?? ""
+        categoriesTextLalbel.text = categories.categoryName
     }
 }
 

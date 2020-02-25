@@ -11,8 +11,6 @@ import AlamofireObjectMapper
 import Alamofire
 import RealmSwift
 
-
-
 extension NewsListViewController {
     
     enum RequestParametes {
@@ -45,7 +43,6 @@ extension NewsListViewController {
             parameters = ["country" : country,
                           "page": pageNumber,
                           "pageSize" : pageSize]
-            
         }
     }
 }
@@ -68,17 +65,11 @@ extension NewsListViewController {
 //  MARK: - TEXT FIELD DELEGATE -
 extension NewsListViewController: UITextFieldDelegate {
     
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        textField.resignFirstResponder()
-//    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchNews()
         return true
     }
 }
-
-
 
 //  MARK: - REFRESH CONTROL - 
 extension NewsListViewController {
@@ -137,9 +128,6 @@ extension NewsListViewController {
     }
 }
 
-
-
-
 //  MARK: - SELECT CATEGORIES NEWS -
 extension NewsListViewController {
     
@@ -161,7 +149,6 @@ extension NewsListViewController {
                        searchColor: .white,
                        mainColor: .red,
                        catColor: .white)
-        
         pageNumber = 1
         getParameters(.topNews)
         news.removeAll()

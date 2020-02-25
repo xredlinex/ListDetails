@@ -32,7 +32,8 @@ class NewsListViewController: UIViewController {
     var news: [NewsArticlesModel] = []
     var newsCategories: [NewsCategories] = []
     
-    let apikey = "df23a739ff1045119ffd367b733c0c58"
+//     "df23a739ff1045119ffd367b733c0c58"
+    let apikey = "841a6548965e40db98c1ddd297e7d5e5"
     var parameters: [String : Any] = [:]
     
     var keyword: String?

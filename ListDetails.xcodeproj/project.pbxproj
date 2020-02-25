@@ -37,7 +37,6 @@
 		97C4452F23F549E800E6828C /* CountrySortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C4452E23F549E800E6828C /* CountrySortViewController.swift */; };
 		97C7903F23F611B2001BC868 /* NewsTableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C7903E23F611B2001BC868 /* NewsTableViewCell+Extension.swift */; };
 		97CCD7BA2404703100FF8E55 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CCD7B92404703100FF8E55 /* NewsModel.swift */; };
-		97CCD7BC2404708A00FF8E55 /* oldRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CCD7BB2404708900FF8E55 /* oldRealmModel.swift */; };
 		F741D6193AC3E641A0999859 /* Pods_ListDetails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0941241C3A703D82EB24D05 /* Pods_ListDetails.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +75,6 @@
 		97C4452E23F549E800E6828C /* CountrySortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySortViewController.swift; sourceTree = "<group>"; };
 		97C7903E23F611B2001BC868 /* NewsTableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsTableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		97CCD7B92404703100FF8E55 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
-		97CCD7BB2404708900FF8E55 /* oldRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oldRealmModel.swift; sourceTree = "<group>"; };
 		C0941241C3A703D82EB24D05 /* Pods_ListDetails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListDetails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -210,7 +208,6 @@
 			children = (
 				97CCD7B92404703100FF8E55 /* NewsModel.swift */,
 				97932AFF23F353140010F339 /* RealmModel.swift */,
-				97CCD7BB2404708900FF8E55 /* oldRealmModel.swift */,
 				97932B0123F3531F0010F339 /* RealmService.swift */,
 				973B4BB223F54C0E0006653B /* CountriesModel .swift */,
 				9745F5FF23F6E57C006FE16A /* NewsCategoriesModel.swift */,
@@ -380,7 +377,6 @@
 				97932AD823F34DC10010F339 /* AppDelegate.swift in Sources */,
 				97932B0223F3531F0010F339 /* RealmService.swift in Sources */,
 				9775795D2403DB1F005F9E00 /* CountrySortViewController+Extension.swift in Sources */,
-				97CCD7BC2404708A00FF8E55 /* oldRealmModel.swift in Sources */,
 				97932AEE23F3511C0010F339 /* NewsListViewController+Extension.swift in Sources */,
 				9775795A2402ED49005F9E00 /* AlertNotification.swift in Sources */,
 				97C4452B23F5495100E6828C /* CountryTableViewCell.swift in Sources */,
