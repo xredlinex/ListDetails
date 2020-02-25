@@ -18,7 +18,7 @@ class CountryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        uiSetupForCell()
+        countryView.setupForView(style: .systemUltraThinMaterialLight)
     }
 }
 
@@ -32,29 +32,5 @@ extension CountryTableViewCell {
         } else {
             countryNameTextLabel.text = "zimbbwaa"
         }
-    }
-}
-
-extension CountryTableViewCell {
-    
-    func uiSetupForCell() {
-        
-        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        blurView.layer.cornerRadius = 6
-        blurView.clipsToBounds = true
-        countryView.insertSubview(blurView, at: 0)
-        countryView.clipsToBounds = true
-        countryView.layer.cornerRadius = 6
-        countryView.layer.masksToBounds = false
-        countryView.layer.shadowColor = UIColor.black.cgColor
-        countryView.layer.shadowOpacity = 0.2
-        countryView.layer.shadowOffset = CGSize(width: 7, height: 7)
-        countryView.layer.shadowRadius = 5
-        countryView.isOpaque = true
-        
-        NSLayoutConstraint.activate([blurView.heightAnchor.constraint(equalTo: countryView.heightAnchor),
-                                     blurView.widthAnchor.constraint(equalTo: countryView.widthAnchor)])
     }
 }

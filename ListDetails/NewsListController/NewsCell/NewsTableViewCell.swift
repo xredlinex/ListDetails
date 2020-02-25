@@ -21,8 +21,8 @@ class NewsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        newsCellView.setupForCell()
+    
+        newsCellView.setupForView(style: .dark)
     }
 }
 
@@ -40,7 +40,7 @@ extension NewsTableViewCell {
         newsTitleTextLabel.text = news.title ?? "-"
         newsDescriptionTextLabel.text = news.description ?? "-"
         newsAuthorTextLabel.text = news.author ?? "-"
-        newsPublishAtTextLabel.text = converDate(news.publishedAt ?? "")
+        newsPublishAtTextLabel.text = convertDate(news.publishedAt ?? "")
         newsFrameView.clipsToBounds = true
         newsFrameView.layer.cornerRadius = 12
     }

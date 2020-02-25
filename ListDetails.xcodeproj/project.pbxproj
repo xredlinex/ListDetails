@@ -150,7 +150,7 @@
 				97932AD923F34DC10010F339 /* SceneDelegate.swift */,
 				9775795B2402ED4F005F9E00 /* Notification */,
 				97932B0323F353290010F339 /* Model+Service */,
-				97932AFE23F352A60010F339 /* Extension */,
+				97932AFE23F352A60010F339 /* UIView */,
 				97932AF123F3513C0010F339 /* NewsListController */,
 				97932AFB23F3526D0010F339 /* NewsDetail */,
 				9789AC4523F3F69D00288637 /* Storyboards */,
@@ -195,12 +195,12 @@
 			path = NewsDetail;
 			sourceTree = "<group>";
 		};
-		97932AFE23F352A60010F339 /* Extension */ = {
+		97932AFE23F352A60010F339 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
 				97932AFC23F3529C0010F339 /* UIView+Extension.swift */,
 			);
-			path = Extension;
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		97932B0323F353290010F339 /* Model+Service */ = {
@@ -208,9 +208,9 @@
 			children = (
 				97CCD7B92404703100FF8E55 /* NewsModel.swift */,
 				97932AFF23F353140010F339 /* RealmModel.swift */,
-				97932B0123F3531F0010F339 /* RealmService.swift */,
 				973B4BB223F54C0E0006653B /* CountriesModel .swift */,
 				9745F5FF23F6E57C006FE16A /* NewsCategoriesModel.swift */,
+				97932B0123F3531F0010F339 /* RealmService.swift */,
 			);
 			path = "Model+Service";
 			sourceTree = "<group>";

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AlamofireObjectMapper
+
 import Alamofire
 import RealmSwift
 
@@ -18,7 +18,6 @@ extension NewsListViewController {
         case search
         case category
         case topNews
-        
     }
     
     func getParameters(_ req: RequestParametes) {
@@ -36,7 +35,6 @@ extension NewsListViewController {
                           "page" : pageNumber,
                           "category" : category,
                           "pageSize": pageSize]
-            
         case .topNews:
             headerTitle = "\(getCountryName(country)) TOP NEWS"
             link = "https://newsapi.org/v2/top-headlines?"
@@ -84,6 +82,7 @@ extension NewsListViewController {
     @objc func refreshData() {
         
         pageNumber = 1
+        parameters["page"] = pageNumber
         news.removeAll()
         tableView.reloadData()
         networkConnectRequesrt()
@@ -128,7 +127,7 @@ extension NewsListViewController {
     }
 }
 
-//  MARK: - SELECT CATEGORIES NEWS -
+//  MARK: - LOAD MAIN NEWS, SELECT CATEGORIES NEWS, SEARCH NEWS -
 extension NewsListViewController {
     
     func didSelectCategoty(_ categoryName: String) {
@@ -160,6 +159,7 @@ extension NewsListViewController {
         
         if let searchKeyword = searchTextField.text, searchKeyword != "" {
             keyword = searchKeyword
+            pageNumber = 1
             getParameters(.search)
             searchTextField.text = ""
             searchTextField.resignFirstResponder()

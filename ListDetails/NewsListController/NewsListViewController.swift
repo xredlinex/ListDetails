@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 import Alamofire
-//import AlamofireObjectMapper
 import Toast_Swift
 import Network
 import FlagKit
@@ -32,7 +31,7 @@ class NewsListViewController: UIViewController {
     var news: [NewsArticlesModel] = []
     var newsCategories: [NewsCategories] = []
     
-//     "df23a739ff1045119ffd367b733c0c58"
+    //     "df23a739ff1045119ffd367b733c0c58"
     let apikey = "841a6548965e40db98c1ddd297e7d5e5"
     var parameters: [String : Any] = [:]
     
@@ -46,12 +45,12 @@ class NewsListViewController: UIViewController {
     var pageSize: Int = 10
     var maxCount: Int = 100
     var isLoadedNews = true
-//    var isSearchNews = false
+    //    var isSearchNews = false
     
     var refreshControll = UIRefreshControl()
     var errorAlert = AlertErrors()
     
-     var countryCodeList = (Countries.CountryCodes.allCases.map { $0.rawValue})
+    var countryCodeList = (Countries.CountryCodes.allCases.map { $0.rawValue})
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,15 +91,12 @@ class NewsListViewController: UIViewController {
         loadMainNews()
     }
     
-    
     @IBAction func didTapSowSearchActionButton(_ sender: Any) {
         loadNewsValues(search: true, collectionValue: 600, searchValue: 900, searchColor: .red, mainColor: .white, catColor: .white)
     }
     
-    
     @IBAction func didTapShowCategories(_ sender: Any) {
         loadNewsValues(search: false, collectionValue: 900, searchValue: 600, searchColor: .white, mainColor: .white, catColor: .red)
-        
     }
     
     @IBAction func searchNewsActionButton(_ sender: Any) {

@@ -12,7 +12,7 @@ import UIKit
 
 extension NewsTableViewCell {
     
-    func converDate(_ date: String) -> String {
+    func convertDate(_ date: String) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.calendar = Calendar(identifier: .iso8601)

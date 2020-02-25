@@ -8,14 +8,13 @@
 
 import Foundation
 import UIKit
-//import AlamofireObjectMapper
 import Alamofire
 import RealmSwift
 import Network
 
 extension NewsListViewController {
     
-    func newNewsRequest() {
+    func newsRequest() {
         
         view.makeToastActivity(.center)
         if !isLoadedNews {
@@ -31,9 +30,7 @@ extension NewsListViewController {
                                             do {
                                                 let newsModel = try JSONDecoder().decode(NewsModel.self, from: data)
                                                 if let articles = newsModel.articles {
-                                                   debugPrint(articles)
                                                     if articles.count != 0 {
-                    
                                                         self.news.append(contentsOf: articles)
                                                         self.writeNewsRealm()
 //                                                        DispatchQueue.main.async {
@@ -44,7 +41,6 @@ extension NewsListViewController {
                                                         self.presentErrorAlert(title: "Sorry!", self.errorAlert.errorKey(.noNews))
                                                         self.view.hideToastActivity()
                                                     }
-                                                    
                                                 } else {
                                                     debugPrint("no reciebe art")
                                                     self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noInternet))
@@ -74,7 +70,7 @@ extension NewsListViewController {
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
                 self.isLoadedNews = false
-                self.newNewsRequest()
+                self.newsRequest()
             } else {
                 debugPrint("try load news from memory")
                 self.view.makeToast(self.errorAlert.errorKey(.noInternet), duration: 5.0, position: .top)

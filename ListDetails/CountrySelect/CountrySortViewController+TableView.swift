@@ -38,7 +38,7 @@ extension CountrySortViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-      viewForCountryHeader()
+        viewForCountryHeader()
     }
 }
 

@@ -21,7 +21,7 @@ extension NewsDetailViewController {
         } else {
             newsArticleImageView.image = UIImage(named: "blankImage")
         }
-        newsPublishAtTextLabel.text = converDate(newsArticle.publishedAt ?? "")
+        newsPublishAtTextLabel.text = convertDate(newsArticle.publishedAt ?? "")
         newsAuthorTextLabel.text = newsArticle.author ?? ""
         newsTitleTextLabel.text = newsArticle.title ?? ""
         newsDescriptipnTextLabel.text = newsArticle.description
@@ -32,13 +32,14 @@ extension NewsDetailViewController {
 extension NewsDetailViewController {
     
     func setupDetailsUI() {
-        newsContentView.setupForCell()
-        shareView.setupForCell()
-        visitWebView.setupForCell()
+        
+        newsContentView.setupForView(style: .dark)
+        shareView.setupForView(style: .dark)
+        visitWebView.setupForView(style: .dark)
         
         if newsArticle.author != nil && newsArticle.author != "" {
             authorView.isHidden = false
-            authorView.setupForCell()
+            authorView.setupForView(style: .dark)
         } else {
             authorView.isHidden = true
         }
@@ -47,7 +48,7 @@ extension NewsDetailViewController {
 
 extension NewsDetailViewController {
     
-    func converDate(_ date: String) -> String {
+    func convertDate(_ date: String) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.calendar = Calendar(identifier: .iso8601)
