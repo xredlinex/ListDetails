@@ -34,15 +34,9 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         if news.count < maxCount && indexPath.row >= news.count - 1 {
             pageNumber += 1
             parameters["page"] = pageNumber
-            debugPrint("00000000")
-            debugPrint(pageNumber)
-            debugPrint("00000000")
             isLoadedNews = false
-//            self.newNewsRequest()
             networkConnectRequesrt()
-//            self.newsRequest()
         }
-        debugPrint(parameters)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

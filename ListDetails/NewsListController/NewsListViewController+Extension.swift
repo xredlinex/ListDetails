@@ -50,9 +50,6 @@ extension NewsListViewController {
 extension NewsListViewController {
     
     func loadNewsValues(search: Bool, collectionValue: Float, searchValue: Float, searchColor: UIColor, mainColor: UIColor, catColor: UIColor) {
-        
-
-
         pageNumber = 1
         isSearchNews = search
         categoriesNewsImageView.tintColor = catColor
@@ -164,7 +161,6 @@ extension NewsListViewController {
         getParameters(.category)
         news.removeAll()
         networkConnectRequesrt()
-        debugPrint(parameters)
         tableView.reloadData()
     }
 }
@@ -174,8 +170,6 @@ extension NewsListViewController {
 extension NewsListViewController {
     
     func loadMainNews() {
-        pageNumber = 1
-        getParameters(.topNews)
         
         loadNewsValues(search: false,
                        collectionValue: 600,
@@ -183,6 +177,9 @@ extension NewsListViewController {
                        searchColor: .white,
                        mainColor: .red,
                        catColor: .white)
+        
+        pageNumber = 1
+        getParameters(.topNews)
         news.removeAll()
         tableView.reloadData()
         networkConnectRequesrt()
