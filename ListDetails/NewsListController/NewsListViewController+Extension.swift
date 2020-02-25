@@ -117,34 +117,7 @@ extension NewsListViewController {
             return country
         }
     }
-    
-    
-//    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EDIT   !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//    func showHeaderTitleOLD() -> String {
-//     
-//        var newsCatText = "TOP NEWS"
-//        var newsCountry = ""
-//        
-//        if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: country) {
-//            newsCountry = name
-//        }
-//        
-//        
-////        re-edit logic !!!!!!!!!
-//        
-//        if category == "" && !isSearchNews {
-//            newsCatText = "TOP NEWS \(newsCountry)"
-//        } else if isSearchNews == true {
-//            newsCatText = "SEARCH NEWS"
-//        } else if category != "" {
-//            newsCatText = "\(category ?? ""), \(newsCountry)"
-//        }
-//        
-//        return newsCatText
-//
-//        
-//    }
-    
+
     func headerView() -> UIView {
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
