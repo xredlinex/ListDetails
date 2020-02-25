@@ -35,7 +35,7 @@ class NewsDetailViewController: UIViewController {
     @IBAction func didTapGoBackButton(_ sender: Any) {
         navigationController?.popViewController(animated: false)
     }
-    
+     
     @IBAction func shareActionButton(_ sender: Any) {
         let shareNews = newsArticle.title ?? ""
         let shareLink = newsArticle.url ?? ""

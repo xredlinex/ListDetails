@@ -18,12 +18,13 @@ extension NewsDetailViewController {
         if let imgUrl = newsArticle.urlToImage {
             let url = URL(string: imgUrl)
             newsArticleImageView.kf.setImage(with: url)
+        } else {
+            newsArticleImageView.image = UIImage(named: "blankImage")
         }
-        
         newsPublishAtTextLabel.text = converDate(newsArticle.publishedAt ?? "")
         newsAuthorTextLabel.text = newsArticle.author ?? ""
         newsTitleTextLabel.text = newsArticle.title ?? ""
-        newsDescriptipnTextLabel.text = newsArticle.newsDescription
+        newsDescriptipnTextLabel.text = newsArticle.description
         newsContentTextLAbel.text = newsArticle.content ?? ""
     }
 }
