@@ -55,7 +55,6 @@ extension NewsListViewController {
     
     func loadNewsValues(search: Bool, collectionValue: Float, searchValue: Float, searchColor: UIColor, mainColor: UIColor, catColor: UIColor) {
         pageNumber = 1
-//        isSearchNews = search
         categoriesNewsImageView.tintColor = catColor
         mainNewsImageView.tintColor = mainColor
         searchNewsImageView.tintColor = searchColor
@@ -68,6 +67,10 @@ extension NewsListViewController {
 
 //  MARK: - TEXT FIELD DELEGATE -
 extension NewsListViewController: UITextFieldDelegate {
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        textField.resignFirstResponder()
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchNews()
@@ -91,6 +94,7 @@ extension NewsListViewController {
         
         pageNumber = 1
         news.removeAll()
+        tableView.reloadData()
         networkConnectRequesrt()
         refreshControll.endRefreshing()
     }
@@ -122,7 +126,6 @@ extension NewsListViewController {
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         let label = UILabel(frame: view.frame)
-//        label.text = showHeaderTitleOLD()
         label.text = headerTitle
         label.textAlignment = .center
         label.textColor = .white
@@ -180,14 +183,4 @@ extension NewsListViewController {
             presentErrorAlert(title: "Error", errorAlert.errorKey(.emtyField))
         }
     }
-}
-
-
-extension NewsListViewController {
-    
-//    func showHeaderTitle() -> String {
-//        
-//        
-//        
-//    }
 }
