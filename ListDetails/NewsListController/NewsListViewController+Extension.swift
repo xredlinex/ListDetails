@@ -62,8 +62,12 @@ extension NewsListViewController {
 
 //  MARK: - TEXT FIELD DELEGATE -
 extension NewsListViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        searchTextField.resignFirstResponder()
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.resignFirstResponder()
         searchNews()
         return true
     }
@@ -167,7 +171,7 @@ extension NewsListViewController {
             tableView.reloadData()
             networkConnectRequesrt()
         } else {
-            presentErrorAlert(title: "Error", errorAlert.errorKey(.emtyField))
+            presentErrorAlert(title: "Sorry!", errorAlert.errorKey(.emtyField))
         }
     }
 }

@@ -15,6 +15,9 @@ class AlertErrors {
         case noLink
         case noInternet
         case noNews
+        case badRequest
+        case noMoreNews
+        case noReq
     }
     
     func errorKey(_ error: ErrorText) -> String {
@@ -23,11 +26,17 @@ class AlertErrors {
         case .emtyField:
             return "News Search Field Is Empty"
         case .noLink:
-            return "Sorry, Bad Request"
+            return "Sorry, Cant Connect to Service"
         case .noInternet:
-            return "No Internet Connection!"
+            return "No Internet Connection"
         case .noNews:
             return "No News Recieved"
+        case .badRequest:
+            return "Bad Request!"
+        case .noMoreNews:
+            return "All News Loaded"
+        case .noReq:
+            return  "Bad Request, No Recieve News or thmsg!"
         }
     }
 }

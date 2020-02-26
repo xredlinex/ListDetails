@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import RealmSwift
 import Network
+import Toast_Swift
 
 extension NewsListViewController {
     
@@ -20,7 +21,7 @@ extension NewsListViewController {
         if !isLoadedNews {
             if let linkCorrect = link {
                 let url = URL(string: linkCorrect)
-                if let urlCorrect = url{
+                if let urlCorrect = url {
                     Alamofire.request(urlCorrect,
                                       method: .get,
                                       parameters: parameters,
@@ -33,25 +34,32 @@ extension NewsListViewController {
                                                     if articles.count != 0 {
                                                         self.news.append(contentsOf: articles)
                                                         self.writeNewsRealm()
-//                                                        DispatchQueue.main.async {
-                                                            self.tableView.reloadData()
-                                                            self.view.hideToastActivity()
-//                                                        }
-                                                    } else {
-                                                        self.presentErrorAlert(title: "Sorry!", self.errorAlert.errorKey(.noNews))
+                                                        self.tableView.reloadData()
                                                         self.view.hideToastActivity()
+                                                    } else {
+                                                        if self.news.count == 0 {
+                                                            self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noNews))
+                                                                self.view.hideToastActivity()
+                                                        } else {
+                                                            self.view.makeToast(self.errorAlert.errorKey(.noMoreNews), duration: 3.0, position: .center)
+                                                            self.view.hideToastActivity()
+                                                        }
                                                     }
                                                 } else {
-                                                    debugPrint("no reciebe art")
-                                                    self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noInternet))
+                                                    self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noReq))
                                                     self.view.hideToastActivity()
                                                 }
-                                                
                                             } catch  {
                                                 debugPrint("error")
                                             }
+                                        } else {
+                                            self.presentErrorAlert(title: "Error", self.errorAlert.errorKey(.badRequest))
+                                            self.view.hideToastActivity()
+                                        }
                     }
-                    }
+                }  else {
+                    self.presentErrorAlert(title: "Error", errorAlert.errorKey(.noLink))
+                    self.view.hideToastActivity()
                 }
             } else {
                 self.presentErrorAlert(title: "Error", errorAlert.errorKey(.noLink))
@@ -60,7 +68,6 @@ extension NewsListViewController {
         }
     }
 }
-
 
 extension NewsListViewController {
     

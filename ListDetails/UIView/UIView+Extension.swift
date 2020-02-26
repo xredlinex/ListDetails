@@ -12,7 +12,7 @@ import UIKit
 extension UIView {
     
     func setupForView(style: UIBlurEffect.Style) {
-//        let view = self
+        
         let blurEffect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.translatesAutoresizingMaskIntoConstraints = false

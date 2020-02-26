@@ -11,8 +11,6 @@ import RealmSwift
 import Alamofire
 import Toast_Swift
 import Network
-import FlagKit
-
 
 class NewsListViewController: UIViewController {
     
@@ -32,7 +30,7 @@ class NewsListViewController: UIViewController {
     var newsCategories: [NewsCategories] = []
     
     //     "df23a739ff1045119ffd367b733c0c58"
-    let apikey = "841a6548965e40db98c1ddd297e7d5e5"
+    let apikey = "c18bf61f50a1464d97db250b243a8bf2"
     var parameters: [String : Any] = [:]
     
     var keyword: String?
@@ -45,7 +43,6 @@ class NewsListViewController: UIViewController {
     var pageSize: Int = 10
     var maxCount: Int = 100
     var isLoadedNews = true
-    //    var isSearchNews = false
     
     var refreshControll = UIRefreshControl()
     var errorAlert = AlertErrors()

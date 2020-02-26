@@ -11,6 +11,7 @@ import UIKit
 
 //  MARK:   - COLLECTION VIEW - NEWS CATEGORIES -
 extension NewsListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
