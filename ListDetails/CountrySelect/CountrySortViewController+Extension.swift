@@ -13,6 +13,7 @@ import UIKit
 extension CountrySortViewController {
     
     func viewForCountryHeader() -> UIView {
+        
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         let label = UILabel(frame: view.frame)
         label.text = "Select News Region"
@@ -25,3 +26,5 @@ extension CountrySortViewController {
         return view
     }
 }
+
+

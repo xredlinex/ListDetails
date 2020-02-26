@@ -17,6 +17,14 @@ class NewsCategories {
 class NewsCategoriesList {
     
     func getCategories() -> [NewsCategories] {
+        let technology = NewsCategories()
+        technology.categoryName = "technology"
+        technology.categoryImage = "technology"
+        
+        let sports = NewsCategories()
+        sports.categoryName = "sports"
+        sports.categoryImage = "sports"
+        
         let business = NewsCategories()
         business.categoryName = "business"
         business.categoryImage = "business"
@@ -36,15 +44,7 @@ class NewsCategoriesList {
         let science = NewsCategories()
         science.categoryName = "science"
         science.categoryImage = "science"
-        
-        let sports = NewsCategories()
-        sports.categoryName = "sports"
-        sports.categoryImage = "sports"
-        
-        let technology = NewsCategories()
-        technology.categoryName = "technology"
-        technology.categoryImage = "technology"
-        
-        return [business, entertainment, general, health, science, sports, technology]
+
+        return [technology, sports, business, entertainment, general, health, science, ]
     }
 }
