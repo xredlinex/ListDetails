@@ -16,17 +16,13 @@ class RealmService {
         let instance = RealmService()
         return instance
     }()
-    
+
     func writeNews(_ news: [NewsArticlesModelRealm]) {
+        
         do {
             let realm = try Realm()
-            let news2 = news
-            news2.forEach { (article) in
-                do {
-                    try realm.write {
-                        realm.add(article)
-                    }
-                } catch {                }
+            try realm.write {
+                realm.add(news)
             }
         } catch {
             debugPrint("Error Write news")

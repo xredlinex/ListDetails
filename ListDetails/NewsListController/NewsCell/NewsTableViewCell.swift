@@ -34,7 +34,7 @@ extension NewsTableViewCell {
             let url = URL(string: imgUrl)
             newsImageView.kf.setImage(with: url)
         } else {
-            newsImageView.image = UIImage(named: "blankImage")
+            newsImageView.image = UIImage(named: "blank")
         }
         
         newsTitleTextLabel.text = news.title ?? "-"

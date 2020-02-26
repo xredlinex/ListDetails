@@ -10,37 +10,6 @@ import Foundation
 import UIKit
 import RealmSwift
 
-//class NewsModelRealm: Object {
-//    dynamic var status: String?
-//    dynamic var totalResults: Int?
-//    dynamic var articles = [NewsArticlesModelRealm]()
-//    
-//    func mapping(map: Map) {
-//          status        <- map["status"]
-//          totalResults  <- map["totalResults"]
-//          articles      <- map["articles"]
-//      }
-//    
-//    required convenience init?(map: Map) {
-//        self.init()
-//    }
-//
-//    required init() {
-//        super.init()
-//    }
-//    
-//    
-//    func convertToRealmModel(from: NewsModel) -> NewsModelRealm {
-//
-//        let news = NewsModelRealm()
-//
-//
-//        return news
-//    }
-//    
-//    
-//}
-
 class NewsArticlesModelRealm: Object {
     
     @objc dynamic var sourse: NewsArticlesSourseModelRealm?
@@ -57,6 +26,4 @@ class NewsArticlesSourseModelRealm: Object {
     
     @objc dynamic var id: String?
     @objc dynamic var name: String?
-
 }
-

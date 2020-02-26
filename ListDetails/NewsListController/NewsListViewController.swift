@@ -6,6 +6,7 @@
 //  Copyright © 2020 alexey sorochan. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import RealmSwift
 import Alamofire

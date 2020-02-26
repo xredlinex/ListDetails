@@ -19,13 +19,13 @@ extension NewsDetailViewController {
             let url = URL(string: imgUrl)
             newsArticleImageView.kf.setImage(with: url)
         } else {
-            newsArticleImageView.image = UIImage(named: "blankImage")
+            newsArticleImageView.image = UIImage(named: "blank")
         }
         newsPublishAtTextLabel.text = convertDate(newsArticle.publishedAt ?? "")
         newsAuthorTextLabel.text = newsArticle.author ?? ""
         newsTitleTextLabel.text = newsArticle.title ?? ""
         newsDescriptipnTextLabel.text = newsArticle.description
-        newsContentTextLAbel.text = newsArticle.content ?? ""
+        newsContentTextLAbel.text = textContentValidate(newsArticle.content ?? "")
     }
 }
 
@@ -60,6 +60,14 @@ extension NewsDetailViewController {
         } else {
             return ""
         }
+    }
+}
+
+
+extension NewsDetailViewController {
+    
+    func textContentValidate(_ text: String) -> String {
+        return text.count >= 260 ? text : "Visit Web Page To See Full Article Context"
     }
 }
 
