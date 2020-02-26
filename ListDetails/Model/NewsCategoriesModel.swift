@@ -17,6 +17,7 @@ class NewsCategories {
 class NewsCategoriesList {
     
     func getCategories() -> [NewsCategories] {
+        
         let technology = NewsCategories()
         technology.categoryName = "technology"
         technology.categoryImage = "technology"

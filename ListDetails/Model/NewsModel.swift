@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class NewsModel: Codable {
+    
     var status: String?
     var totalResults: Int?
     var articles: [NewsArticlesModel]?
@@ -20,6 +21,7 @@ class NewsModel: Codable {
 }
 
 class NewsArticlesModel: Codable {
+    
     var source: NewsArticlesSourceModel?
     var author: String?
     var title: String?
@@ -28,14 +30,14 @@ class NewsArticlesModel: Codable {
     var urlToImage: String?
     var publishedAt: String?
     var content: String?
-    var favorite = false
     
     enum CodingKeys: String, CodingKey {
         case source, author, title, description, url, urlToImage, publishedAt, content
-      }
+    }
 }
 
 class NewsArticlesSourceModel: Codable {
+    
     var id: String?
     var name: String?
     

@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import RealmSwift
 
+//    MARK: - REQUEST PARAMETERS -
 extension NewsListViewController {
     
     enum RequestParametes {
@@ -115,7 +116,7 @@ extension NewsListViewController {
             return country
         }
     }
-
+    
     func headerView() -> UIView {
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))

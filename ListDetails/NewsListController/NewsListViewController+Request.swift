@@ -13,6 +13,7 @@ import RealmSwift
 import Network
 import Toast_Swift
 
+//  MARK: - REQUEST -
 extension NewsListViewController {
     
     func newsRequest() {
@@ -39,7 +40,7 @@ extension NewsListViewController {
                                                     } else {
                                                         if self.news.count == 0 {
                                                             self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noNews))
-                                                                self.view.hideToastActivity()
+                                                            self.view.hideToastActivity()
                                                         } else {
                                                             self.view.makeToast(self.errorAlert.errorKey(.noMoreNews), duration: 3.0, position: .center)
                                                             self.view.hideToastActivity()
@@ -69,6 +70,7 @@ extension NewsListViewController {
     }
 }
 
+//  MARK: - NETWORK MONITOR -
 extension NewsListViewController {
     
     func networkConnectRequesrt() {
@@ -89,6 +91,7 @@ extension NewsListViewController {
     }
 }
 
+//  MARK: - WRITE NEWS TO REALM -
 extension NewsListViewController {
     
     func writeNewsRealm() {
@@ -105,9 +108,11 @@ extension NewsListViewController {
     }
 }
 
+//  MARK: - CONVERT NEWS MODEL TO REALM MODEL AND BACK -
 extension NewsListViewController {
     
     func convertToRealmModel(fromArticlesModel: [NewsArticlesModel]) -> [NewsArticlesModelRealm] {
+        
         var realmNews: [NewsArticlesModelRealm] = []
         
         for news in fromArticlesModel {
@@ -151,6 +156,7 @@ extension NewsListViewController {
     }
     
     func convertToNewsModel(fromRealmArticles: [NewsArticlesModelRealm]) -> [NewsArticlesModel]  {
+        
         var news: [NewsArticlesModel] = []
         
         for realmNews in fromRealmArticles {

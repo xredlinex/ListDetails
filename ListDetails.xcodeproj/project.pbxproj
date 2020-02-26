@@ -149,11 +149,12 @@
 				97932AD723F34DC10010F339 /* AppDelegate.swift */,
 				97932AD923F34DC10010F339 /* SceneDelegate.swift */,
 				9775795B2402ED4F005F9E00 /* Notification */,
+				97D724B524072243002FF2D0 /* Model */,
 				97932B0323F353290010F339 /* Model+Service */,
 				97932AF123F3513C0010F339 /* NewsListController */,
 				97932AFB23F3526D0010F339 /* NewsDetail */,
-				9789AC4523F3F69D00288637 /* Storyboards */,
 				97C4452823F548E700E6828C /* CountrySelect */,
+				9789AC4523F3F69D00288637 /* Storyboards */,
 				97932AFE23F352A60010F339 /* UIView */,
 				97932AE023F34DC30010F339 /* Assets.xcassets */,
 				97932AE223F34DC30010F339 /* LaunchScreen.storyboard */,
@@ -206,10 +207,7 @@
 		97932B0323F353290010F339 /* Model+Service */ = {
 			isa = PBXGroup;
 			children = (
-				97CCD7B92404703100FF8E55 /* NewsModel.swift */,
 				97932AFF23F353140010F339 /* RealmModel.swift */,
-				973B4BB223F54C0E0006653B /* CountriesModel .swift */,
-				9745F5FF23F6E57C006FE16A /* NewsCategoriesModel.swift */,
 				97932B0123F3531F0010F339 /* RealmService.swift */,
 			);
 			path = "Model+Service";
@@ -233,6 +231,16 @@
 				97C4452A23F5495100E6828C /* CountryTableViewCell.xib */,
 			);
 			path = CountryCell;
+			sourceTree = "<group>";
+		};
+		97D724B524072243002FF2D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				97CCD7B92404703100FF8E55 /* NewsModel.swift */,
+				9745F5FF23F6E57C006FE16A /* NewsCategoriesModel.swift */,
+				973B4BB223F54C0E0006653B /* CountriesModel .swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B984A6156C48C99ACEEBEFE1 /* Frameworks */ = {

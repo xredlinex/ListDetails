@@ -29,6 +29,7 @@ extension NewsDetailViewController {
     }
 }
 
+//  MARK: - UI DESIGN - 
 extension NewsDetailViewController {
     
     func setupDetailsUI() {
@@ -46,6 +47,7 @@ extension NewsDetailViewController {
     }
 }
 
+//  MARK: - CONVERT DATE -
 extension NewsDetailViewController {
     
     func convertDate(_ date: String) -> String {

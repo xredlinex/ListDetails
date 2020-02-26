@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+//  MARK: - VIEW ELEMENTH ADD BLUR AND RADIUS -
 extension UIView {
     
     func setupForView(style: UIBlurEffect.Style) {
@@ -33,6 +35,7 @@ extension UIView {
     }
 }
 
+//  MARK: - ADD GRADIENT LAYER TO CATEGORIES COLLECTION VIEW -
 extension UIView {
     
     func setupForRoundLayer() {
@@ -56,6 +59,5 @@ extension UIView {
         shape.fillColor = UIColor.clear.cgColor
         gradient.mask = shape
         self.layer.addSublayer(gradient)
-        
     }
 }

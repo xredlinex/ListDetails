@@ -33,9 +33,6 @@ extension CategoriesCollectionViewCell {
     func setupForCategoriesCell() {
         categoriesView.clipsToBounds = true
         categoriesView.layer.cornerRadius = categoriesView.frame.width / 2
-//        categoriesView.layer.borderWidth = 2
-//        categoriesView.layer.borderColor = UIColor.red.cgColor
-        
         categoriesView.setupForRoundLayer()
     }
 }
