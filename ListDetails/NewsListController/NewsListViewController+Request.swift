@@ -27,36 +27,37 @@ extension NewsListViewController {
                                       method: .get,
                                       parameters: parameters,
                                       encoding: URLEncoding.default,
-                                      headers: ["X-Api-Key" : apikey]).responseData { (response) in
-                                        if let data = response.result.value {
-                                            do {
-                                                let newsModel = try JSONDecoder().decode(NewsModel.self, from: data)
-                                                if let articles = newsModel.articles {
-                                                    if articles.count != 0 {
-                                                        self.news.append(contentsOf: articles)
-                                                        self.writeNewsRealm()
-                                                        self.tableView.reloadData()
-                                                        self.view.hideToastActivity()
-                                                    } else {
-                                                        if self.news.count == 0 {
-                                                            self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noNews))
-                                                            self.view.hideToastActivity()
-                                                        } else {
-                                                            self.view.makeToast(self.errorAlert.errorKey(.noMoreNews), duration: 3.0, position: .center)
-                                                            self.view.hideToastActivity()
-                                                        }
-                                                    }
-                                                } else {
-                                                    self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noReq))
-                                                    self.view.hideToastActivity()
-                                                }
-                                            } catch  {
-                                                debugPrint("error")
-                                            }
-                                        } else {
-                                            self.presentErrorAlert(title: "Error", self.errorAlert.errorKey(.badRequest))
+                                      headers: ["X-Api-Key" : apikey])
+                        .responseData { (response) in
+                            if let data = response.result.value {
+                                do {
+                                    let newsModel = try JSONDecoder().decode(NewsModel.self, from: data)
+                                    if let articles = newsModel.articles {
+                                        if articles.count != 0 {
+                                            self.news.append(contentsOf: articles)
+                                            self.writeNewsRealm()
+                                            self.tableView.reloadData()
                                             self.view.hideToastActivity()
+                                        } else {
+                                            if self.news.count == 0 {
+                                                self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noNews))
+                                                self.view.hideToastActivity()
+                                            } else {
+                                                self.view.makeToast(self.errorAlert.errorKey(.noMoreNews), duration: 3.0, position: .center)
+                                                self.view.hideToastActivity()
+                                            }
                                         }
+                                    } else {
+                                        self.presentErrorAlert(title: "Sorry", self.errorAlert.errorKey(.noReq))
+                                        self.view.hideToastActivity()
+                                    }
+                                } catch  {
+                                    debugPrint("error")
+                                }
+                            } else {
+                                self.presentErrorAlert(title: "Error", self.errorAlert.errorKey(.badRequest))
+                                self.view.hideToastActivity()
+                            }
                     }
                 }  else {
                     self.presentErrorAlert(title: "Error", errorAlert.errorKey(.noLink))
@@ -81,10 +82,11 @@ extension NewsListViewController {
                 self.isLoadedNews = false
                 self.newsRequest()
             } else {
-                debugPrint("try load news from memory")
                 self.view.makeToast(self.errorAlert.errorKey(.noInternet), duration: 5.0, position: .top)
-                self.getNewsRealm()
-                self.tableView.reloadData()
+                if self.pageNumber < 10 {
+                    self.getNewsRealm()
+                    self.tableView.reloadData()
+                }
             }
         }
         monitor.start(queue: DispatchQueue.main)

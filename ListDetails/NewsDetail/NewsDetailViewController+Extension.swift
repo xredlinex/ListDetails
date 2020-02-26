@@ -65,7 +65,6 @@ extension NewsDetailViewController {
     }
 }
 
-
 extension NewsDetailViewController {
     
     func textContentValidate(_ text: String) -> String {
