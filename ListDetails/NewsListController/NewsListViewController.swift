@@ -6,11 +6,12 @@
 //  Copyright © 2020 alexey sorochan. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import RealmSwift
 import Alamofire
-import AlamofireObjectMapper
 import Toast_Swift
+import Network
 
 class NewsListViewController: UIViewController {
     
@@ -29,40 +30,36 @@ class NewsListViewController: UIViewController {
     var news: [NewsArticlesModel] = []
     var newsCategories: [NewsCategories] = []
     
-    let apikey = "df23a739ff1045119ffd367b733c0c58"
+    //     "df23a739ff1045119ffd367b733c0c58"
+    let apikey = "c18bf61f50a1464d97db250b243a8bf2"
+    var parameters: [String : Any] = [:]
+    
     var keyword: String?
-    var category: String?
+    var category: String = ""
     var country: String = "us"
     var link: String?
+    var headerTitle: String = "TOP NEWS"
     
     var pageNumber: Int = 1
     var pageSize: Int = 10
     var maxCount: Int = 100
     var isLoadedNews = true
-    var isSearchNews = false
-    var ifConnect = false
     
     var refreshControll = UIRefreshControl()
+    var errorAlert = AlertErrors()
+    
+    var countryCodeList = (Countries.CountryCodes.allCases.map { $0.rawValue})
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         newsCategories = NewsCategoriesList().getCategories()
-        defaultValues()
-        networkConnect()
-        refreshCoontrol()
         
-        if !ifConnect {
-            if news.isEmpty {
-                isLoadedNews = false
-                newsRequest()
-            }
-        } else {
-            if realmService.getNews().isEmpty {
-            } else {
-                news = realmService.getNews()
-            }
-        }
+        getParameters(.topNews)
+        networkConnectRequesrt()
+        refreshControl()
+        
+        loadNewsValues(search: false, collectionValue: 600, searchValue: 600, searchColor: .white, mainColor: .red, catColor: .white)
         
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView.delegate = self
@@ -89,18 +86,15 @@ class NewsListViewController: UIViewController {
     }
     
     @IBAction func didTapMainNewsActionButton(_ sender: Any) {
-        mainNews()
+        loadMainNews()
     }
-    
     
     @IBAction func didTapSowSearchActionButton(_ sender: Any) {
-        searchValues()
+        loadNewsValues(search: true, collectionValue: 600, searchValue: 900, searchColor: .red, mainColor: .white, catColor: .white)
     }
     
-    
     @IBAction func didTapShowCategories(_ sender: Any) {
-        categoriesValues()
-        
+        loadNewsValues(search: false, collectionValue: 900, searchValue: 600, searchColor: .white, mainColor: .white, catColor: .red)
     }
     
     @IBAction func searchNewsActionButton(_ sender: Any) {

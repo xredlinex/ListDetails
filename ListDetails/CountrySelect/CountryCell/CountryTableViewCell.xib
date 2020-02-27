@@ -19,15 +19,15 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmP-Nh-gzt">
                         <rect key="frame" x="15" y="10" width="295" height="50"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE3-ZA-hmA">
-                                <rect key="frame" x="90" y="5" width="185" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE3-ZA-hmA">
+                                <rect key="frame" x="130" y="5" width="145" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pau-ZS-fWH">
-                                <rect key="frame" x="30" y="5" width="40" height="40"/>
+                                <rect key="frame" x="50" y="5" width="40" height="40"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8SW-rc-u6h">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -48,9 +48,9 @@
                         <constraints>
                             <constraint firstItem="pau-ZS-fWH" firstAttribute="centerY" secondItem="lmP-Nh-gzt" secondAttribute="centerY" id="00n-Af-EUn"/>
                             <constraint firstItem="BE3-ZA-hmA" firstAttribute="top" secondItem="lmP-Nh-gzt" secondAttribute="top" constant="5" id="2fM-r5-tNK"/>
-                            <constraint firstItem="pau-ZS-fWH" firstAttribute="leading" secondItem="lmP-Nh-gzt" secondAttribute="leading" constant="30" id="C0h-kv-1ZJ"/>
+                            <constraint firstItem="pau-ZS-fWH" firstAttribute="leading" secondItem="lmP-Nh-gzt" secondAttribute="leading" constant="50" id="C0h-kv-1ZJ"/>
                             <constraint firstAttribute="bottom" secondItem="BE3-ZA-hmA" secondAttribute="bottom" constant="5" id="Flv-ZW-1Jl"/>
-                            <constraint firstItem="BE3-ZA-hmA" firstAttribute="leading" secondItem="pau-ZS-fWH" secondAttribute="trailing" constant="20" id="Rkz-Lh-gFl"/>
+                            <constraint firstItem="BE3-ZA-hmA" firstAttribute="leading" secondItem="pau-ZS-fWH" secondAttribute="trailing" constant="40" id="Rkz-Lh-gFl"/>
                             <constraint firstAttribute="height" constant="50" id="UZv-zZ-q28"/>
                             <constraint firstAttribute="trailing" secondItem="BE3-ZA-hmA" secondAttribute="trailing" constant="20" id="i8m-Vx-6Yk"/>
                         </constraints>

@@ -16,8 +16,8 @@ class RealmService {
         let instance = RealmService()
         return instance
     }()
-    
-    func writeNews(_ news: [NewsArticlesModel]) {
+
+    func writeNews(_ news: [NewsArticlesModelRealm]) {
         
         do {
             let realm = try Realm()
@@ -29,11 +29,11 @@ class RealmService {
         }
     }
     
-    func getNews() -> [NewsArticlesModel] {
+    func getNews() -> [NewsArticlesModelRealm] {
         
         do {
             let realm = try Realm()
-            let news = realm.objects(NewsArticlesModel.self)
+            let news = realm.objects(NewsArticlesModelRealm.self)
             let newsList = Array(news)
             return newsList
         } catch {
@@ -47,7 +47,7 @@ class RealmService {
         do {
             let realm = try Realm()
             try realm.write {
-                realm.deleteAll()
+                realm.delete(getNews())
             }
         } catch {
             debugPrint("error delete news from ream")

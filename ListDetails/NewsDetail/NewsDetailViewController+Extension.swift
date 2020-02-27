@@ -18,35 +18,39 @@ extension NewsDetailViewController {
         if let imgUrl = newsArticle.urlToImage {
             let url = URL(string: imgUrl)
             newsArticleImageView.kf.setImage(with: url)
+        } else {
+            newsArticleImageView.image = UIImage(named: "blank")
         }
-        
-        newsPublishAtTextLabel.text = converDate(newsArticle.publishedAt ?? "")
+        newsPublishAtTextLabel.text = convertDate(newsArticle.publishedAt ?? "")
         newsAuthorTextLabel.text = newsArticle.author ?? ""
         newsTitleTextLabel.text = newsArticle.title ?? ""
-        newsDescriptipnTextLabel.text = newsArticle.newsDescription
-        newsContentTextLAbel.text = newsArticle.content ?? ""
+        newsDescriptipnTextLabel.text = newsArticle.description
+        newsContentTextLAbel.text = textContentValidate(newsArticle.content ?? "")
     }
 }
 
+//  MARK: - UI DESIGN - 
 extension NewsDetailViewController {
     
     func setupDetailsUI() {
-        newsContentView.setupForCell()
-        shareView.setupForCell()
-        visitWebView.setupForCell()
+        
+        newsContentView.setupForView(style: .dark)
+        shareView.setupForView(style: .dark)
+        visitWebView.setupForView(style: .dark)
         
         if newsArticle.author != nil && newsArticle.author != "" {
             authorView.isHidden = false
-            authorView.setupForCell()
+            authorView.setupForView(style: .dark)
         } else {
             authorView.isHidden = true
         }
     }
 }
 
+//  MARK: - CONVERT DATE -
 extension NewsDetailViewController {
     
-    func converDate(_ date: String) -> String {
+    func convertDate(_ date: String) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.calendar = Calendar(identifier: .iso8601)
@@ -58,6 +62,13 @@ extension NewsDetailViewController {
         } else {
             return ""
         }
+    }
+}
+
+extension NewsDetailViewController {
+    
+    func textContentValidate(_ text: String) -> String {
+        return text.count >= 260 ? text : "Visit Web Page To See Full Article Context"
     }
 }
 
