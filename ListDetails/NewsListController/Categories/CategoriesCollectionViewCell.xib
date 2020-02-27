@@ -36,11 +36,11 @@
                                     <constraint firstAttribute="trailing" secondItem="tH6-0F-J3q" secondAttribute="trailing" id="wsL-Wm-XTa"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A16-JP-EBI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A16-JP-EBI">
                                 <rect key="frame" x="0.0" y="75" width="91" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="81" id="2n6-hf-Ty5"/>
-                                    <constraint firstAttribute="height" constant="20.5" id="ZC6-GI-Lqt"/>
+                                    <constraint firstAttribute="width" constant="91" id="WzT-Ub-ck2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="ZC6-GI-Lqt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
